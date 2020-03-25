@@ -2,5 +2,5 @@
 
 ## Planned features
 
-[ ] Feature parity with old captain's mode 
-[ ] Map drafting
+- [ ] Feature parity with old captain's mode 
+- [ ] Map drafting
