@@ -1,0 +1,12 @@
+<!doctype html>
+<head>
+    <title><%= error.status %></title>
+    <link rel="stylesheet" href="/static/css/mvp.css">
+</head>
+<body>
+    <main>
+        <h1><%= message %></h1>
+        <h2><%= error.status %></h2>
+        <pre><%= error.stack %></pre>
+    </main>
+</body>
