@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 require('dotenv').config();
-const logger = require('../logger');
-const app = require('../app');
-const sockets = require('../sockets');
-const server = require('../server');
+const logger = require('../src/logger');
+const app = require('../src/app');
+const sockets = require('../src/sockets');
+const server = require('../src/server');
 
 /**
  * Get port from environment and store in Express.
