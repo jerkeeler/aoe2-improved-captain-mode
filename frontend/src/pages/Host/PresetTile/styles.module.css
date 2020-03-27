@@ -1,0 +1,16 @@
+.tile {
+  border: 2px solid var(--color-bg-secondary);;
+  display: inline-block;
+  padding: 20px 25px;
+  text-align: center;
+  border-radius: var(--border-radius);
+}
+
+.tile:hover {
+  cursor: pointer;
+  box-shadow: var(--box-shadow) var(--color-bg-secondary);
+}
+
+.tile > h4 {
+  margin: 0
+}
