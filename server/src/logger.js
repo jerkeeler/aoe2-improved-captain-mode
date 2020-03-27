@@ -1,5 +1,4 @@
 const { createLogger, transports, format } = require('winston');
-const { defaults } = require('lodash');
 
 const { IS_PROD, LOG_LEVEL, MAX_LOG_FILES, MAX_LOG_SIZE } = require('./consts');
 

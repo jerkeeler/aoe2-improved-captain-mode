@@ -3,6 +3,7 @@ import { ACTIONS } from './actions';
 const initialState = {
   civs: [],
   maps: [],
+  draftPresets: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,6 +12,8 @@ const reducer = (state = initialState, action) => {
       return {...state, civs: action.civs};
     case ACTIONS.SET_MAPS:
       return {...state, maps: action.maps};
+    case ACTIONS.SET_PRESETS:
+      return {...state, draftPresets: action.presetDrafts};
     default:
       return state;
   }
