@@ -6,7 +6,7 @@ const requestLogger = require('morgan');
 const helmet = require('helmet');
 
 const logger = require('./logger');
-const dataRouter = require('./routes/data');
+const apiRouter = require('./routes/api');
 const { MORGAN_FORMAT, IS_PROD } = require('./consts');
 
 logger.info('Configuring express application...');
@@ -34,9 +34,10 @@ app.use(cookieParser());
 // In development, serve up static assets, in reality these will be served by nginx or the ilk
 if (!IS_PROD) {
   app.use('/static', express.static(path.join(__dirname, 'public')));
+  app.use('/api/static', express.static(path.join(__dirname)))
 }
 
-app.use('/api/data', dataRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
