@@ -10,7 +10,7 @@ class Store {
   newDraft = (draftConfig) => {
     const token = randomToken();
     if (this.state[token])
-      throw SameTokenError(token);
+      throw new SameTokenError(token);
 
     this.state[token] = new ActiveDraft(token, draftConfig);
     return token;

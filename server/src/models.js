@@ -1,3 +1,9 @@
+const DRAFT_TYPES = {
+  CIVS: 'C',
+  CIVS_AND_MAPS: 'CM',
+  MAPS: 'M',
+};
+
 const ACTION_TYPE = {
   BAN: 'B',
   PICK: 'P',
@@ -65,6 +71,7 @@ class ActiveDraft {
 }
 
 module.exports = {
+  DRAFT_TYPES,
   ACTION_TYPE,
   ACTION_SCOPE,
   ACTION_VISIBILITY,

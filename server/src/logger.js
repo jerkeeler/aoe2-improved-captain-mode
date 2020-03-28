@@ -12,12 +12,6 @@ const logger = createLogger({
   ),
   transports: [
     new transports.File({
-      filename: './logs/info.log',
-      level: 'info',
-      maxsize: MAX_LOG_SIZE,
-      maxFiles: MAX_LOG_FILES,
-    }),
-    new transports.File({
       filename: './logs/error.log',
       level: 'warn',
       handleExceptions: true,
@@ -30,6 +24,15 @@ const logger = createLogger({
 logger.morganStream = {
   write: message => logger.info(message),
 };
+
+if (IS_PROD) {
+  logger.add(new transports.File({
+    filename: './logs/info.log',
+    level: 'info',
+    maxsize: MAX_LOG_SIZE,
+    maxFiles: MAX_LOG_FILES,
+  }));
+}
 
 if (!IS_PROD) {
   logger.add(new transports.Console({

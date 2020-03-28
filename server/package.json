@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "debug": "./node_modules/.bin/nodemon ./bin/www",
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "jest"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -24,6 +25,12 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.0",
+    "babel-jest": "^25.2.3",
+    "jest": "^25.2.3",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
   }
 }

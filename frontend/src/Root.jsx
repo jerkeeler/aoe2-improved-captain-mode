@@ -3,8 +3,9 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import DataPrefetch from './components/DataPrefetch';
-import Host from './pages/Host';
-import Home from './pages/Home';
+import Host from './pages/host';
+import Home from './pages/home';
+import Draft from './pages/draft';
 import store from './store';
 
 const Root = () => (
@@ -13,6 +14,7 @@ const Root = () => (
       <BrowserRouter>
         <Route path="/" exact component={Home} />
         <Route path="/host" component={Host} />
+        <Route path="/draft/:token" component={Draft} />
       </BrowserRouter>
     </DataPrefetch>
   </Provider>

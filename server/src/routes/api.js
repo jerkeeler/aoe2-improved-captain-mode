@@ -15,7 +15,15 @@ const router = Router();
 router.get('/civilizations', (req, res, next) => res.json(civilizations));
 router.get('/maps', (req, res, next) => res.json(maps));
 router.get('/names', (req, res, next) => res.json(names));
-router.get('/drafts/presets', (req, res, next) => res.json(draftPresets));
+router.get('/drafts', (req, res, next) => {
+  const token = req.query.token;
+  if (!token || !draftStore.state[token]) {
+    res.sendStatus(404);
+    return;
+  }
+  res.json({valid: true});
+});
+router.get('/drafts/presets', (req, res, next) => res.json({ presets: draftPresets }));
 router.post('/drafts', (req, res, next) => {
   validateDraft(req.body);
   const draftConfig = loadDraft(req.body);

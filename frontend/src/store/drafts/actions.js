@@ -20,7 +20,7 @@ export const getDraftPresets = () => async (dispatch) => {
   dispatch(setPresets(presetDrafts));
 };
 
-export const createDraft = (draft) => async (dispatch) => {
-  const activeDraft = await draftsService.createDraft(draft);
+export const getDraft = (token) => async (dispatch) => {
+  const activeDraft = await draftsService.getDraft(token);
   dispatch(setActiveDraft(activeDraft));
 };
