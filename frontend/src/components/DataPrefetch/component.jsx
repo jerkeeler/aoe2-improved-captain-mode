@@ -6,10 +6,11 @@ class DataPrefetch extends React.Component {
   };
 
   async componentDidMount() {
-    const { getMaps, getCivs, getDraftPresets } = this.props;
+    const { getMaps, getCivs, getNames, getDraftPresets } = this.props;
     await Promise.all([
       getMaps(),
       getCivs(),
+      getNames(),
       getDraftPresets(),
     ]);
     this.setState({loading: false});

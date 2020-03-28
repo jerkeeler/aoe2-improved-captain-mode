@@ -23,8 +23,16 @@ class InvalidActionError extends Error {
   }
 }
 
+class SameTokenError extends Error {
+  constructor(token) {
+    super(`Token ${token} is already being used!`);
+    this.name = 'SameTokenError';
+  }
+}
+
 module.exports = {
   InvalidCivError,
   InvalidMapError,
   InvalidActionError,
+  SameTokenError,
 };

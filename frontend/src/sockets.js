@@ -1,4 +1,8 @@
 import openSocket from 'socket.io-client';
 const socket = openSocket();
 
-export { socket };
+const joinRoom = (token) => {
+  socket.emit('join', {draftToken: token});
+};
+
+export { joinRoom };

@@ -1,12 +1,10 @@
 import * as dataService from '../services/data';
-import * as draftsService from '../services/drafts';
-
-import { loadDraft } from '../models';
 
 export const ACTIONS = {
   SET_MAPS: 'data/set-maps',
   SET_CIVS: 'data/set-civs',
-  SET_PRESETS: 'drafts/set-presets',
+  SET_NAMES: 'data/set-names',
+  SET_CAPTAIN_NAME: 'data/set-captain-name',
 };
 
 const setMaps = (maps) => ({
@@ -19,9 +17,14 @@ const setCivs = (civs) => ({
   civs,
 });
 
-const setPresets = (presetDrafts) => ({
-  type: ACTIONS.SET_PRESETS,
-  presetDrafts,
+const setNames = (names) => ({
+  type: ACTIONS.SET_NAMES,
+  names,
+});
+
+const setCaptainName = (name) => ({
+  type: ACTIONS.SET_CAPTAIN_NAME,
+  name,
 });
 
 export const getMaps = () => async (dispatch) => {
@@ -34,7 +37,11 @@ export const getCivs = () => async (dispatch) => {
   dispatch(setCivs(civs));
 };
 
-export const getDraftPresets = () => async (dispatch) => {
-  const presetDrafts = await draftsService.getPresets();
-  dispatch(setPresets(presetDrafts));
+export const getNames = () => async (dispatch) => {
+  const names = await dataService.getNames();
+  dispatch(setNames(names));
+};
+
+export const changeCaptainName =  (newName) => (dispatch) => {
+  dispatch(setCaptainName(newName));
 };

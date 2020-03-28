@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 
 import DraftPresetsList from './component';
 
-const mapStateToProps = ({ defaultReducer }) => ({
-  presets: defaultReducer.draftPresets,
+const mapStateToProps = ({ draftsReducer }) => ({
+  presets: draftsReducer.draftPresets,
 });
 
 export default connect(mapStateToProps)(DraftPresetsList);

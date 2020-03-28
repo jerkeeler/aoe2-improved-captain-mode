@@ -3,9 +3,16 @@ import { Link } from 'react-router-dom';
 
 import Footer from '../components/Footer';
 import Layout from '../components/Layout';
+import NameNavItem from '../components/NameNavItem';
 
 const Home = () => (
   <Layout>
+    <nav>
+      <p></p>
+      <ul>
+        <NameNavItem />
+      </ul>
+    </nav>
     <header>
       <h1>Age of Empires II <u>Improved</u> Captain's Mode</h1>
       <p>DE civilizations 👍, maps 🗺, replayable drafts 🔁, and shareable draft configurations! 🤯</p>

@@ -43,6 +43,16 @@ export class Action {
   }
 }
 
+export class ActiveDraft {
+  constructor(token, draftConfig) {
+    this.token = token;
+    this.draftConfig = draftConfig;
+    this.actionsTaken = [];
+    this.currentAction = null;
+    this.timer = -1;
+  }
+}
+
 export function loadDraft(draftJson) {
   const actions = draftJson.actions.map(a => new Action(a.scope, a.type, a.visibility, a.captain));
   return new Draft(draftJson.name, actions, draftJson.globalCivBans, draftJson.mapPool);

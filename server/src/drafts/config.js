@@ -1,7 +1,7 @@
-const civs = require('./data/civilizations').civilizations;
-const maps = require('./data/maps').maps;
-const { ACTION_SCOPE, ACTION_TYPE, ACTION_VISIBILITY, CAPTAINS, Action, Draft } = require('./models');
-const { InvalidActionError, InvalidCivError, InvalidMapError } = require('./xceptions');
+const civs = require('../data/civilizations').civilizations;
+const maps = require('../data/maps').maps;
+const { ACTION_SCOPE, ACTION_TYPE, ACTION_VISIBILITY, CAPTAINS, Action, Draft } = require('../models');
+const { InvalidActionError, InvalidCivError, InvalidMapError } = require('../xceptions');
 
 const civIds = new Set(civs.map(c => c.id));
 const mapIds = new Set(maps.map(m => m.id));
@@ -59,7 +59,13 @@ function validateAction(action) {
     throw new InvalidActionError(action);
 }
 
+function loadDraft(draftJson) {
+  const actions = draftJson.actions.map(a => new Action(a.scope, a.type, a.visibility, a.captain));
+  return new Draft(draftJson.name, actions, draftJson.globalCivBans, draftJson.mapPool);
+}
+
 module.exports = {
   inflatePresets,
   validateDraft,
+  loadDraft,
 };

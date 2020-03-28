@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers, compose, } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
 import defaultReducer from './reducer';
+import draftsReducer from './drafts/reducer';
 import crashMiddleware from './middleware/crash';
 
 
@@ -14,6 +15,7 @@ const composedEnhancers = composeEnhancers(middlewareEnhancer);
 
 const rootReducer = combineReducers({
   defaultReducer,
+  draftsReducer,
 });
 
 const store = createStore(rootReducer, undefined, composedEnhancers);

@@ -10,3 +10,8 @@ export async function getMaps() {
   return response.data.maps;
 }
 
+export async function getNames() {
+  const response = await axios.get('/api/names');
+  return response.data.names;
+}
+

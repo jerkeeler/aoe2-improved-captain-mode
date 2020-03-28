@@ -1,0 +1,21 @@
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: var(--spacing);
+}
+
+.icon {
+  top: 5px;
+  position: relative;
+  font-size: x-large;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 60px;
+  grid-gap: var(--spacing);
+}

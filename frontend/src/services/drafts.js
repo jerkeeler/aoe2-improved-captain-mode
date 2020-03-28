@@ -1,13 +1,15 @@
 import axios from 'axios';
-import { loadDraft } from '../models';
+
+import { joinRoom } from '../sockets';
+import { loadDraft, ActiveDraft } from '../models';
 
 export async function getPresets() {
   const response = await axios.get('/api/drafts/presets');
-  const presetDrafts = response.data.map(loadDraft);
-  return presetDrafts;
+  return response.data.map(loadDraft);
 }
 
-export async function validateDraft(draft) {
-  const response = await axios.post('/api/drafts/validate', draft);
-  return response.data;
+export async function createDraft(draft) {
+  const response = await axios.post('/api/drafts', draft);
+  const activeDraft = new ActiveDraft(response.data.draftToken, draft);
+  joinRoom(activeDraft.token);
 }

@@ -43,6 +43,27 @@ class Action {
   }
 }
 
+class ActiveDraft {
+  constructor(token, draftConfig) {
+    this.token = token;
+    this.draftConfig = draftConfig;
+    this.currentActionIdx = -1;
+    this.timer = -1;
+    this.timerId = null;
+    this.actionsTaken = [];
+    this.captain1 = {
+      loaded: false,
+      bans: [],
+      picks: [],
+    };
+    this.captain2 = {
+      loaded: false,
+      bans: [],
+      picks: [],
+    };
+  }
+}
+
 module.exports = {
   ACTION_TYPE,
   ACTION_SCOPE,
@@ -50,4 +71,5 @@ module.exports = {
   CAPTAINS,
   Action,
   Draft,
+  ActiveDraft,
 };

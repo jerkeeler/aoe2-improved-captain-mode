@@ -1,3 +1,8 @@
+:root {
+  --spacing: 20px;
+  --white: #fff;
+}
+
 a:hover {
   cursor: pointer;
 }
@@ -12,4 +17,19 @@ a.disabled:hover {
 
 .disabled:hover {
   cursor: not-allowed;
+}
+
+button {
+  margin: 0.5rem 0;
+}
+
+button.outline {
+  background-color: var(--white);
+  border: 2px solid var(--color);
+  color: var(--color);
+  font-style: italic;
+}
+
+input {
+  border: 2px solid var(--color-bg-secondary);
 }

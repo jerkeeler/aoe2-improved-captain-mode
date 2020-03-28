@@ -1,14 +1,15 @@
 import React from 'react';
 
 import Modal from '../../../components/Modal';
+import styles from './styles.module.css';
 
-const PresetModal = ({ show, handleClose, preset }) => (
+const PresetModal = ({ show, handleClose, preset, createDraft }) => (
   <Modal handleClose={handleClose} show={show}>
-    <header>
-      <p>Do you wish to start preset <strong>"{preset.name}"</strong> as a captain or a spectator?</p>
-      <a><strong>Captain</strong></a>
-      <a><em>Spectator</em></a>
-    </header>
+    <p>Do you wish to start preset <strong>"{preset.name}"</strong> as a captain or a spectator?</p>
+    <div className={styles.buttons}>
+      <button onClick={() => createDraft(preset)}>Captain</button>
+      <button className="outline">Spectator</button>
+    </div>
   </Modal>
 );
 
