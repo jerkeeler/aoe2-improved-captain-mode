@@ -1,9 +1,10 @@
 const { Router } = require('express');
-const { randomToken } = require('../random');
 const logger = require('../logger');
 
 const { inflatePresets, validateDraft, loadDraft } = require('../drafts/config');
-const draftStore = require('../drafts/store');
+const { createNewDraft } = require('../drafts/actions');
+const { draftExists } = require('../drafts/storeRo');
+
 const civilizations = require('../data/civilizations');
 const maps = require('../data/maps');
 const draftPresets = inflatePresets(require('../data/drafts').presets);
@@ -17,7 +18,7 @@ router.get('/maps', (req, res, next) => res.json(maps));
 router.get('/names', (req, res, next) => res.json(names));
 router.get('/drafts', (req, res, next) => {
   const token = req.query.token;
-  if (!token || !draftStore.state[token]) {
+  if (!token || !draftExists(token)) {
     res.sendStatus(404);
     return;
   }
@@ -27,7 +28,7 @@ router.get('/drafts/presets', (req, res, next) => res.json({ presets: draftPrese
 router.post('/drafts', (req, res, next) => {
   validateDraft(req.body);
   const draftConfig = loadDraft(req.body);
-  const newDraftToken = draftStore.newDraft(draftConfig);
+  const newDraftToken = createNewDraft(draftConfig);
   logger.info(`New draft created: ${newDraftToken}`);
   res.json({'draftToken': newDraftToken});
 });

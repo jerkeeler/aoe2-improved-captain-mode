@@ -2,11 +2,12 @@ const { createLogger, transports, format } = require('winston');
 
 const { IS_PROD, LOG_LEVEL, MAX_LOG_FILES, MAX_LOG_SIZE } = require('./consts');
 
-const { colorize, combine, timestamp, prettyPrint, simple } = format;
+const { colorize, combine, timestamp, prettyPrint, simple, splat } = format;
 
 const logger = createLogger({
   level: LOG_LEVEL,
   format: combine(
+    splat(),
     timestamp(),
     prettyPrint(),
   ),

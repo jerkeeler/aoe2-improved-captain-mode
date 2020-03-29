@@ -1,11 +1,14 @@
 const supertest = require('supertest');
-const draftStore = require('../../src/drafts/store');
+
+const { clearState, createNewDraft }= require('../../src/drafts/actions');
 const app = require('../../src/app');
+const validDraft = require('../fixtures').validDraft;
+
 const request = supertest(app);
 
 describe('api routes', () => {
   afterEach(()  => {
-    draftStore.state = {};
+    clearState();
   });
 
   test('/civilizations', async () => {
@@ -47,8 +50,8 @@ describe('api routes', () => {
   });
 
   test('/drafts valid token', async () => {
-    draftStore.state['VALID'] = true;
-    const res = await request.get('/api/drafts?token=VALID');
+    const token = createNewDraft(validDraft);
+    const res = await request.get(`/api/drafts?token=${token}`);
     expect(res.statusCode).toEqual(200);
     expect(res.body.valid).toBeTruthy();
   });

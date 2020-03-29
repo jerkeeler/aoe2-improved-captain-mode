@@ -10,36 +10,7 @@ const {
 const { inflatePresets, validateDraft, loadDraft } = require('../../src/drafts/config');
 const presets = require('../../src/data/drafts').presets;
 const { InvalidActionError } = require('../../src/xceptions');
-
-const validDraft = {
-  name: 'test',
-  actions: [
-    {
-      scope: 'G',
-      object: 'C',
-      type: 'P',
-      visibility: 'V',
-      captain: 1,
-    }
-  ],
-  globalCivBans: [],
-  mapPool: [],
-};
-
-const invalidDraft = {
-  name: 'test',
-  actions: [
-    {
-      scope: 'XXXXXXXX',
-      object: 'C',
-      type: 'P',
-      visibility: 'V',
-      captain: 1,
-    }
-  ],
-  globalCivBans: [],
-  mapPool: [],
-};
+const { validDraft, invalidDraft } = require('../fixtures');
 
 describe('draft configuration', ()  => {
   test('inflatePresets', () => {

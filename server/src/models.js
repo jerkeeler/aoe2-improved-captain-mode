@@ -65,58 +65,6 @@ class Action {
   }
 }
 
-class ActiveDraft {
-  constructor(token, draftConfig) {
-    this.state = DRAFT_STATE.WAITING;
-    this.numSpectators = 0;
-    this.token = token;
-    this.draftConfig = draftConfig;
-    this.currentActionIdx = -1;
-    this.captain1 = {
-      token: null,
-      name: null,
-      loaded: false,
-      ready: false,
-      bans: [],
-      picks: [],
-    };
-    this.captain2 = {
-      token: null,
-      name: null,
-      loaded: false,
-      ready: false,
-      bans: [],
-      picks: [],
-    };
-    this.timer = -1;
-    this.timerId = null;
-    this.actionsTaken = [];
-    this.startTime = new Date();
-  }
-
-  forFrontend = () => ({
-    state: this.state,
-    numSpectators: this.numSpectators,
-    token: this.token,
-    draftConfig: this.draftConfig,
-    currentActionIdx: this.currentActionIdx,
-    captain1: {
-      name: this.captain1.name,
-      loaded: this.captain1.loaded,
-      ready: this.captain1.ready,
-      bans: this.captain1.bans,
-      picks: this.captain1.picks,
-    },
-    captain2: {
-      name: this.captain2.name,
-      loaded: this.captain2.loaded,
-      ready: this.captain2.ready,
-      bans: this.captain2.bans,
-      picks: this.captain2.picks,
-    },
-  });
-}
-
 module.exports = {
   DRAFT_TYPES,
   ACTION_OBJECT,
@@ -128,5 +76,4 @@ module.exports = {
   ROLES,
   Action,
   Draft,
-  ActiveDraft,
 };

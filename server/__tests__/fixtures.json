@@ -1,0 +1,30 @@
+{
+  "validDraft": {
+    "name": "test",
+    "actions": [
+      {
+        "scope": "G",
+        "object": "C",
+        "type": "P",
+        "visibility": "V",
+        "captain": 1
+      }
+    ],
+    "globalCivBans": [],
+    "mapPool": []
+  },
+  "invalidDraft": {
+    "name": "test",
+    "actions": [
+      {
+        "scope": "XXXXXXXX",
+        "object": "C",
+        "type": "P",
+        "visibility": "V",
+        "captain": 1
+      }
+    ],
+    "globalCivBans": [],
+    "mapPool": []
+  }
+}

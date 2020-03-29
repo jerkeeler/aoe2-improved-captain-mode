@@ -49,7 +49,7 @@ class NameChooser extends React.Component {
       <Modal show={show} handleClose={this.close}>
         <p>What would you like your captain name to be?</p>
         <div className={styles.form}>
-          <input value={this.state.captainName} onChange={this.onChange} />
+          <input value={this.state.captainName} onChange={this.onChange} placeholder="Boulder" />
           <span className={styles.icon} onClick={this.randomName}>🔄</span>
         </div>
         <div className={styles.buttons}>

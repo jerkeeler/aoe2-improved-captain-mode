@@ -2,26 +2,28 @@
 const { ROLES } = require('../models');
 const { randomToken } = require('../random');
 const logger = require('../logger');
-const store = require('./store');
+
+const { canJoin } = require('./storeRo');
+const { joinSpectator, joinCaptain } = require('./actions');
 
 function joinRoom(socket, connInfo, { token, role, name }) {
-  const canJoin = store.canJoin(token, role);
-  if (!canJoin.result) {
-    socket.emit('disconnectMessage', canJoin.reason);
+  const joinResult = canJoin(token, role);
+  if (!joinResult.result) {
+    socket.emit('disconnectMessage', joinResult.reason);
     socket.disconnect();
     return;
   }
 
   switch (role) {
     case ROLES.SPECTATOR:
-      store.joinSpec(token);
+      joinSpectator(token);
       connInfo.draftToken = token;
       connInfo.role = ROLES.SPECTATOR;
       logger.info(`Spectator joined draft ${token}`);
       return;
     case ROLES.CAPTAIN:
       const captainToken = randomToken();
-      store.joinCaptain(token, captainToken, name);
+      joinCaptain(token, captainToken, name);
       connInfo.token = captainToken;
       connInfo.draftToken = token;
       connInfo.role = ROLES.CAPTAIN;

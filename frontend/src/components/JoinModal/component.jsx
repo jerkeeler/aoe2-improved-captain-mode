@@ -25,11 +25,11 @@ class JoinModal extends React.Component {
       <Modal handleClose={handleClose} show={show}>
         <p>Enter the token of the draft you would like to join:</p>
         <div className={styles.inputWrapper}>
-          <input onChange={this.onChange} />
+          <input onChange={this.onChange} placeholder="aaa..." />
         </div>
         <div className={styles.buttons}>
           <button onClick={this.onJoin}>Join</button>
-          <button className="outline">Close</button>
+          <button onClick={handleClose} className="outline">Close</button>
         </div>
       </Modal>
     );
