@@ -19,6 +19,11 @@ const reducer = (state = initialState, action) => {
       });
     case ACTIONS.JOIN_SPECTATOR:
       return state.setIn([action.token, 'numSpectators'], state.getIn([action.token, 'numSpectators']) + 1);
+    case ACTIONS.READY_CAPTAIN:
+      if (state.getIn([action.token, 'captain1', 'token']) === action.captainToken)
+        return state.setIn([action.token, 'captain1', 'ready'], true);
+      else if (state.getIn([action.token, 'captain2', 'token']) === action.captainToken)
+        return state.setIn([action.token, 'captain2', 'ready'], true);
     default:
       return state;
   }

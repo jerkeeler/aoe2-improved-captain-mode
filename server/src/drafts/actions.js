@@ -5,6 +5,7 @@ const { createActiveDraft } = require('./factory');
 const { randomToken } = require('../random');
 const ACTIONS = require('./actionTypes');
 
+// ACTION CREATORS
 const clearStateCreator = () => ({ type: ACTIONS.CLEAR_STATE });
 
 const newDraftCreator = (token, draft) => ({
@@ -25,6 +26,13 @@ const joinSpectatorCreator = (token) => ({
   token,
 });
 
+const readyCaptainCreator = (token, captainToken) => ({
+  type: ACTIONS.READY_CAPTAIN,
+  token,
+  captainToken,
+});
+
+// ACTIONS
 const clearState = () => {
   if (!IS_PROD)  // Don't allow arbitrary clears on prod
     dispatch(clearStateCreator());
@@ -49,10 +57,13 @@ const joinSpectator = (token) => {
   dispatch(joinSpectatorCreator(token));
 };
 
+const readyCaptain = (token, captainToken) => dispatch(readyCaptainCreator(token, captainToken));
+
 module.exports = {
   clearState,
   createNewDraft,
   joinCaptain,
   joinSpectator,
+  readyCaptain,
 };
 

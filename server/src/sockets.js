@@ -5,9 +5,15 @@ const draftLogic = require('./drafts/run');
 
 io.on('connection', (socket) => {
   let connInfo = {};
+  const socketInfo = {
+    socket,
+    connInfo,
+    io,
+  };
   logger.debug('a user connected!');
 
-  socket.on('join', (data) => draftLogic.joinRoom(socket, connInfo, data));
+  socket.on('join', (data) => draftLogic.joinRoom(socketInfo, data));
+  socket.on('ready', () => draftLogic.captainReady(socketInfo));
 
   socket.on('disconnect', function() {
     // Do clean up code:

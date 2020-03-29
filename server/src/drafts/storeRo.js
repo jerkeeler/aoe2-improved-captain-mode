@@ -19,7 +19,19 @@ function draftExists(token) {
   return state.has(token);
 }
 
+function getDraftConfig(token) {
+  const state = store.getState();
+  return state.getIn([token, 'draftConfig']);
+}
+
+function areCaptainsReady(token) {
+  const draft = store.getState().get(token);
+  return draft.getIn(['captain1', 'ready']) && draft.getIn(['captain2', 'ready']);
+}
+
 module.exports = {
   canJoin,
   draftExists,
+  getDraftConfig,
+  areCaptainsReady,
 };

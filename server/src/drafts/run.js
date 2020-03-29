@@ -3,10 +3,10 @@ const { ROLES } = require('../models');
 const { randomToken } = require('../random');
 const logger = require('../logger');
 
-const { canJoin } = require('./storeRo');
-const { joinSpectator, joinCaptain } = require('./actions');
+const { canJoin, areCaptainsReady } = require('./storeRo');
+const { joinSpectator, joinCaptain, readyCaptain } = require('./actions');
 
-function joinRoom(socket, connInfo, { token, role, name }) {
+function joinRoom({ socket, connInfo}, { token, role, name }) {
   const joinResult = canJoin(token, role);
   if (!joinResult.result) {
     socket.emit('disconnectMessage', joinResult.reason);
@@ -30,9 +30,17 @@ function joinRoom(socket, connInfo, { token, role, name }) {
       logger.info(`Captain "${name}" (${captainToken}) joined draft ${token}`);
       return;
   }
+}
 
+function captainReady({ io, connInfo }) {
+  if (!connInfo.draftToken || !connInfo.token)
+    return;
+  readyCaptain(connInfo.draftToken, connInfo.token);
+  if (areCaptainsReady(connInfo.draftToken))
+    io.in(connInfo.draftToken).emit('ready');
 }
 
 module.exports = {
   joinRoom,
+  captainReady,
 };
