@@ -1,6 +1,7 @@
 export const ACTION_OBJECT = {
   MAP: 'M',
   CIV: 'C',
+  ALL: 'A',
 };
 
 export const ACTION_TYPE = {
@@ -12,15 +13,13 @@ export const ACTION_TYPE = {
 export const ACTION_SCOPE = {
   GLOBAL: 'G', // Prevents all captains from choosing the same choice
   EXCLUSIVE: 'E',  // Prevents only the captain that chose from choosing the same thing
-  PICKS: 'P',
-  BANS: 'B',
-  ALL: 'A',
+  NONE: '_',
 };
 
 export const ACTION_VISIBILITY = {
   HIDDEN: 'H',
   VISIBLE: 'V',
-  NONE: 'N',
+  NONE: '_',
 };
 
 export const CAPTAINS = {

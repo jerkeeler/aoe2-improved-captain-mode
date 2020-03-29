@@ -7,6 +7,7 @@ const DRAFT_TYPES = {
 const ACTION_OBJECT = {
   MAP: 'M',
   CIV: 'C',
+  ALL: 'A',
 };
 
 const ACTION_TYPE = {
@@ -18,15 +19,13 @@ const ACTION_TYPE = {
 const ACTION_SCOPE = {
   GLOBAL: 'G', // Prevents all captains from choosing the same choice
   EXCLUSIVE: 'E',  // Prevents only the captain that chose from choosing the same thing
-  PICKS: 'P',
-  BANS: 'B',
-  ALL: 'A',
+  NONE: '_',
 };
 
 const ACTION_VISIBILITY = {
   HIDDEN: 'H',
   VISIBLE: 'V',
-  NONE: 'N',
+  NONE: '_',
 };
 
 const CAPTAINS = {

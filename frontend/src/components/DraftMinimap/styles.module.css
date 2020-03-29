@@ -1,0 +1,7 @@
+.actionList {
+  display: grid;
+  padding-left: 0;
+  grid-gap: 10px;
+  grid-auto-flow: column;
+  justify-content: center;
+}

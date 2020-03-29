@@ -1,0 +1,36 @@
+.pill {
+  display: inline-block;
+  width: 100%;
+  height: 5px;
+  border-radius: var(--border-radius);
+  margin: 0 auto;
+}
+
+.captain1 {
+  background-color: var(--captain1);
+}
+
+.captain2 {
+  background-color: var(--captain2);
+}
+
+.admin {
+  background-color: var(--admin);
+}
+
+.active {
+  box-shadow: var(--box-shadow) var(--color);
+  animation: pulse 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes pulse {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(1.8);
+  }
+}

@@ -1,6 +1,9 @@
 :root {
   --spacing: 20px;
   --white: #fff;
+  --captain1: #7fc97f;
+  --captain2: #fdc086;
+  --admin: #beaed4;
 }
 
 a:hover {

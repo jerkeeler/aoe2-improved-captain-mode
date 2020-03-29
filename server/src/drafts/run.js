@@ -10,7 +10,6 @@ function joinRoom({ socket, connInfo}, { token, role, name }) {
   const joinResult = canJoin(token, role);
   if (!joinResult.result) {
     socket.emit('disconnectMessage', joinResult.reason);
-    socket.disconnect();
     return;
   }
 
@@ -38,6 +37,10 @@ function captainReady({ io, connInfo }) {
   readyCaptain(connInfo.draftToken, connInfo.token);
   if (areCaptainsReady(connInfo.draftToken))
     io.in(connInfo.draftToken).emit('ready');
+}
+
+function startDraft() {
+
 }
 
 module.exports = {

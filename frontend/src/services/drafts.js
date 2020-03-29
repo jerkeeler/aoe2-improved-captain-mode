@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { loadDraft, ActiveDraft } from '../models';
+import { loadDraft } from '../models';
 
 export async function getPresets() {
   const response = await axios.get('/api/drafts/presets');
@@ -12,7 +12,7 @@ export async function createDraft(draft) {
   return response.data.draftToken;
 }
 
-export async function getDraft(token) {
-  const response = await axios.get(`/api/drafts?token=${token}`);
-  return new ActiveDraft(response.data);
+export async function getDraftConfig(token) {
+  const response = await axios.get(`/api/drafts/${token}`);
+  return loadDraft(response.data);
 }

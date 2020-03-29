@@ -1,2 +1,4 @@
+import { withRouter } from 'react-router';
 import DisconnectModal from './component';
-export default DisconnectModal;
+
+export default withRouter(DisconnectModal);

@@ -6,23 +6,34 @@ import Layout from '../../components/Layout';
 import { ROLES } from '../../models';
 import DisconnectModal from './DisconnectModal';
 import JoinDraftModal from './JoinDraftModal';
+import ActiveDraft from './ActiveDraft';
+
+const initialState = {
+  disconnect: false,
+  disconnectReason: null,
+  nameModal: false,
+  joinModal: true,
+  role: null,
+  draftToken: null,
+};
 
 class Draft extends React.Component {
-  state = {
-    disconnect: false,
-    disconnectReason: null,
-    nameModal: false,
-    joinModal: true,
-    role: null,
-    draftToken: null,
-  };
+  state = {...initialState};
 
   componentDidMount() {
     const { match: { params: urlToken } } = this.props;
     this.setState({draftToken: urlToken.token});
   }
 
-  join = (token, name, role) => {
+  componentWillUnmount() {
+    const { clearActiveDraft } = this.props;
+    clearActiveDraft();
+    socket.disconnect();
+  }
+
+  join = async (token, name, role) => {
+    const { getDraftConfig } = this.props;
+    await getDraftConfig(token, role);
     joinRoom(token, name, role);
     socket.on('disconnectMessage', (msg) => this.setState({disconnect: true, disconnectReason: msg}));
   };
@@ -45,12 +56,13 @@ class Draft extends React.Component {
   };
 
   render() {
+    const { activeDraftToken } = this.props;
     return (
       <Layout>
         <JoinDraftModal handleClose={this.joinModalClose} show={this.state.joinModal} draftToken={this.state.draftToken} />
         <NameChooser handleClose={this.nameModalClose} show={this.state.nameModal} hideCancel={true} />
         <DisconnectModal handleClose={() => {}} show={this.state.disconnect} reason={this.state.disconnectReason} />
-        <h1>Draft</h1>
+        {activeDraftToken && <ActiveDraft />}
       </Layout>
     )
   }

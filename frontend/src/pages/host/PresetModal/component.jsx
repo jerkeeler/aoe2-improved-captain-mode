@@ -2,6 +2,7 @@ import React from 'react';
 
 import { createDraft } from '../../../services/drafts';
 import Modal from '../../../components/Modal';
+import DraftMinimap from '../../../components/DraftMinimap';
 import styles from './styles.module.css';
 
 class PresetModal extends React.Component {
@@ -16,6 +17,7 @@ class PresetModal extends React.Component {
     return (
       <Modal handleClose={handleClose} show={show}>
         <p>Do you wish to create a new draft with preset <strong>"{preset.name}"</strong>?</p>
+        <DraftMinimap draftConfig={preset} />
         <div className={styles.buttons}>
           <button onClick={this.createDraft}>Create</button>
           <button className="outline" onClick={handleClose}>Cancel</button>
