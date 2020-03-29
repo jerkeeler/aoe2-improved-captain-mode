@@ -6,7 +6,7 @@ const logger = require('../logger');
 const { canJoin, areCaptainsReady } = require('./storeRo');
 const { joinSpectator, joinCaptain, readyCaptain } = require('./actions');
 
-function joinRoom({ socket, connInfo}, { token, role, name }) {
+function joinRoom({ socket, connInfo }, { token, role, name }) {
   const joinResult = canJoin(token, role);
   if (!joinResult.result) {
     socket.emit('disconnectMessage', joinResult.reason);
@@ -19,7 +19,7 @@ function joinRoom({ socket, connInfo}, { token, role, name }) {
       connInfo.draftToken = token;
       connInfo.role = ROLES.SPECTATOR;
       logger.info(`Spectator joined draft ${token}`);
-      return;
+      break;
     case ROLES.CAPTAIN:
       const captainToken = randomToken();
       joinCaptain(token, captainToken, name);
@@ -27,8 +27,11 @@ function joinRoom({ socket, connInfo}, { token, role, name }) {
       connInfo.draftToken = token;
       connInfo.role = ROLES.CAPTAIN;
       logger.info(`Captain "${name}" (${captainToken}) joined draft ${token}`);
-      return;
+      break;
+    default:
+      throw new Error('Role not valid for joining room!');
   }
+  socket.join(token);
 }
 
 function captainReady({ io, connInfo }) {

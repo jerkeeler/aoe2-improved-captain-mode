@@ -1,7 +1,7 @@
 import React from 'react';
 
 import NameChooser from '../../components/NameChooser';
-import { socket, connect, joinRoom } from '../../sockets';
+import { socket, joinRoom } from '../../sockets';
 import Layout from '../../components/Layout';
 import { ROLES } from '../../models';
 import DisconnectModal from './DisconnectModal';

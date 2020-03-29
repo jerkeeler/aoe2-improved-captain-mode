@@ -11,8 +11,11 @@ const doAction = () => {
 };
 
 const connect = () => {
-  if (socket !== null)
-    throw new Error('Connection already open! Cannot open new connection!');
+  if (socket !== null) {
+    console.error('Connection already open! Cannot open new connection!');
+    socket.disconnect();
+    socket = null;
+  }
   socket = openSocket();
   socket.on('disconnect', () => socket = null);
 };
