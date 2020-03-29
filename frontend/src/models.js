@@ -1,3 +1,8 @@
+export const ACTION_OBJECT = {
+  MAP: 'M',
+  CIV: 'C',
+};
+
 export const ACTION_TYPE = {
   BAN: 'B',
   PICK: 'P',
@@ -24,6 +29,11 @@ export const CAPTAINS = {
   ADMIN: 3,
 };
 
+export const ROLES = {
+  SPECTATOR: 'spectator',
+  CAPTAIN: 'captain',
+};
+
 
 export class Draft {
   constructor(name, actions, globalCivBans, mapPool) {
@@ -35,8 +45,9 @@ export class Draft {
 }
 
 export class Action {
-  constructor(scope, type, visibility, captain) {
+  constructor(scope, object, type, visibility, captain) {
     this.scope = scope;
+    this.object = object;
     this.type = type;
     this.visibility = visibility;
     this.captain = captain;
@@ -54,6 +65,6 @@ export class ActiveDraft {
 }
 
 export function loadDraft(draftJson) {
-  const actions = draftJson.actions.map(a => new Action(a.scope, a.type, a.visibility, a.captain));
+  const actions = draftJson.actions.map(a => new Action(a.scope, a.object, a.type, a.visibility, a.captain));
   return new Draft(draftJson.name, actions, draftJson.globalCivBans, draftJson.mapPool);
 }

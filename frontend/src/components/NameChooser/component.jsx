@@ -34,17 +34,17 @@ class NameChooser extends React.Component {
   setName = () => {
     const { handleClose, changeCaptainName } = this.props;
     changeCaptainName(this.state.captainName);
-    handleClose();
+    handleClose(this.state.captainName);
   };
 
   close = () => {
     const { handleClose, captainName } = this.props;
     this.changeName(captainName);
-    handleClose();
+    handleClose(captainName);
   };
 
   render() {
-    const { show } = this.props;
+    const { show, hideCancel = false } = this.props;
     return (
       <Modal show={show} handleClose={this.close}>
         <p>What would you like your captain name to be?</p>
@@ -54,7 +54,7 @@ class NameChooser extends React.Component {
         </div>
         <div className={styles.buttons}>
           <button onClick={this.setName}>Set Name</button>
-          <button className="outline" onClick={this.close}><em>Cancel</em></button>
+          {!hideCancel && <button className="outline" onClick={this.close}><em>Cancel</em></button>}
         </div>
       </Modal>
     )

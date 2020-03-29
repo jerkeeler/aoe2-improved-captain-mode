@@ -6,6 +6,7 @@ const initialState = {
   maps: [],
   names: [],
   captainName: null,
+  nameConfirmed: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,7 +18,7 @@ const reducer = (state = initialState, action) => {
     case ACTIONS.SET_NAMES:
       return {...state, names: action.names, captainName: randomEl(action.names)};
     case ACTIONS.SET_CAPTAIN_NAME:
-      return {...state, captainName: action.name};
+      return {...state, captainName: action.name, nameConfirmed: true};
     default:
       return state;
   }

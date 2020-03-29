@@ -4,6 +4,11 @@ const DRAFT_TYPES = {
   MAPS: 'M',
 };
 
+const ACTION_OBJECT = {
+  MAP: 'M',
+  CIV: 'C',
+};
+
 const ACTION_TYPE = {
   BAN: 'B',
   PICK: 'P',
@@ -30,6 +35,16 @@ const CAPTAINS = {
   ADMIN: 3,
 };
 
+const DRAFT_STATE = {
+  WAITING: 'WAITING',
+  IN_PROGRESS: 'IN_PROGRESS',
+  FINISHED: 'FINISHED',
+};
+
+const ROLES = {
+  SPECTATOR: 'spectator',
+  CAPTAIN: 'captain',
+};
 
 class Draft {
   constructor(name, actions, globalCivBans, mapPool) {
@@ -41,8 +56,9 @@ class Draft {
 }
 
 class Action {
-  constructor(scope, type, visibility, captain) {
+  constructor(scope, object, type, visibility, captain) {
     this.scope = scope;
+    this.object = object;
     this.type = type;
     this.visibility = visibility;
     this.captain = captain;
@@ -51,31 +67,65 @@ class Action {
 
 class ActiveDraft {
   constructor(token, draftConfig) {
+    this.state = DRAFT_STATE.WAITING;
+    this.numSpectators = 0;
     this.token = token;
     this.draftConfig = draftConfig;
     this.currentActionIdx = -1;
-    this.timer = -1;
-    this.timerId = null;
-    this.actionsTaken = [];
     this.captain1 = {
+      token: null,
+      name: null,
       loaded: false,
+      ready: false,
       bans: [],
       picks: [],
     };
     this.captain2 = {
+      token: null,
+      name: null,
       loaded: false,
+      ready: false,
       bans: [],
       picks: [],
     };
+    this.timer = -1;
+    this.timerId = null;
+    this.actionsTaken = [];
+    this.startTime = new Date();
   }
+
+  forFrontend = () => ({
+    state: this.state,
+    numSpectators: this.numSpectators,
+    token: this.token,
+    draftConfig: this.draftConfig,
+    currentActionIdx: this.currentActionIdx,
+    captain1: {
+      name: this.captain1.name,
+      loaded: this.captain1.loaded,
+      ready: this.captain1.ready,
+      bans: this.captain1.bans,
+      picks: this.captain1.picks,
+    },
+    captain2: {
+      name: this.captain2.name,
+      loaded: this.captain2.loaded,
+      ready: this.captain2.ready,
+      bans: this.captain2.bans,
+      picks: this.captain2.picks,
+    },
+  });
 }
 
 module.exports = {
   DRAFT_TYPES,
+  ACTION_OBJECT,
   ACTION_TYPE,
   ACTION_SCOPE,
   ACTION_VISIBILITY,
   CAPTAINS,
+  DRAFT_STATE,
+  ROLES,
   Action,
   Draft,
   ActiveDraft,

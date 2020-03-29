@@ -1,6 +1,14 @@
 const civs = require('../data/civilizations').civilizations;
 const maps = require('../data/maps').maps;
-const { ACTION_SCOPE, ACTION_TYPE, ACTION_VISIBILITY, CAPTAINS, Action, Draft } = require('../models');
+const {
+  ACTION_OBJECT,
+  ACTION_SCOPE,
+  ACTION_TYPE,
+  ACTION_VISIBILITY,
+  CAPTAINS,
+  Action,
+  Draft,
+} = require('../models');
 const { InvalidActionError, InvalidCivError, InvalidMapError } = require('../xceptions');
 
 const civIds = new Set(civs.map(c => c.id));
@@ -9,12 +17,13 @@ const actionScopeValues = new Set(Object.values(ACTION_SCOPE));
 const actionTypeValues = new Set(Object.values(ACTION_TYPE));
 const actionVisibilityValues = new Set(Object.values(ACTION_VISIBILITY));
 const captainValues = new Set(Object.values(CAPTAINS));
+const actionObjectValues = new Set(Object.values(ACTION_OBJECT));
 
 
 function compressedDataToJson(compressedData) {
   const [name, rawActions, rawCivBans, rawMapPool] = compressedData.split('|');
-  const actions = rawActions.split(',').map(a => a.split('')).map(([scope, action, visibility, player]) =>
-    new Action(scope, action, visibility, +player)
+  const actions = rawActions.split(',').map(a => a.split('')).map(([scope, object, action, visibility, player]) =>
+    new Action(scope, object, action, visibility, +player)
   );
   const globalCivBans = (rawCivBans && rawCivBans.split(',').map(c => +c)) || [];
   const mapPool = (rawMapPool && rawMapPool.split(',').map(m => +m)) || [];
@@ -57,10 +66,12 @@ function validateAction(action) {
     throw new InvalidActionError(action);
   if (!captainValues.has(action.captain))
     throw new InvalidActionError(action);
+  if (!actionObjectValues.has(action.object))
+    throw new InvalidActionError(action);
 }
 
 function loadDraft(draftJson) {
-  const actions = draftJson.actions.map(a => new Action(a.scope, a.type, a.visibility, a.captain));
+  const actions = draftJson.actions.map(a => new Action(a.scope, a.object, a.type, a.visibility, a.captain));
   return new Draft(draftJson.name, actions, draftJson.globalCivBans, draftJson.mapPool);
 }
 

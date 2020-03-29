@@ -59,6 +59,7 @@ describe('api routes', () => {
       actions: [
         {
           scope: 'G',
+          object: 'C',
           type: 'P',
           visibility: 'V',
           captain: 1,

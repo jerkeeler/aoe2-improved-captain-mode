@@ -1,2 +1,10 @@
+import { connect } from 'react-redux';
+
 import Draft from './component';
-export default Draft;
+
+const mapStateToProps = ({ defaultReducer: { captainName, nameConfirmed}}) => ({
+  captainName,
+  nameConfirmed,
+});
+
+export default connect(mapStateToProps)(Draft);

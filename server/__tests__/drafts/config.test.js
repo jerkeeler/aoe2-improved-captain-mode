@@ -1,4 +1,12 @@
-const { ACTION_SCOPE, ACTION_VISIBILITY, ACTION_TYPE, CAPTAINS, Draft, Action } = require('../../src/models');
+const {
+  ACTION_OBJECT,
+  ACTION_SCOPE,
+  ACTION_VISIBILITY,
+  ACTION_TYPE,
+  CAPTAINS,
+  Draft,
+  Action,
+} = require('../../src/models');
 const { inflatePresets, validateDraft, loadDraft } = require('../../src/drafts/config');
 const presets = require('../../src/data/drafts').presets;
 const { InvalidActionError } = require('../../src/xceptions');
@@ -8,6 +16,7 @@ const validDraft = {
   actions: [
     {
       scope: 'G',
+      object: 'C',
       type: 'P',
       visibility: 'V',
       captain: 1,
@@ -22,6 +31,7 @@ const invalidDraft = {
   actions: [
     {
       scope: 'XXXXXXXX',
+      object: 'C',
       type: 'P',
       visibility: 'V',
       captain: 1,
@@ -41,48 +51,56 @@ describe('draft configuration', ()  => {
       [
         new Action(
           ACTION_SCOPE.GLOBAL,
+          ACTION_OBJECT.CIV,
           ACTION_TYPE.BAN,
           ACTION_VISIBILITY.VISIBLE,
           CAPTAINS.CAP_1
         ),
         new Action(
           ACTION_SCOPE.GLOBAL,
+          ACTION_OBJECT.CIV,
           ACTION_TYPE.BAN,
           ACTION_VISIBILITY.VISIBLE,
           CAPTAINS.CAP_2
         ),
         new Action(
           ACTION_SCOPE.GLOBAL,
+          ACTION_OBJECT.CIV,
           ACTION_TYPE.BAN,
           ACTION_VISIBILITY.VISIBLE,
           CAPTAINS.CAP_2
         ),
         new Action(
           ACTION_SCOPE.GLOBAL,
+          ACTION_OBJECT.CIV,
           ACTION_TYPE.BAN,
           ACTION_VISIBILITY.VISIBLE,
           CAPTAINS.CAP_1
         ),
         new Action(
           ACTION_SCOPE.GLOBAL,
+          ACTION_OBJECT.CIV,
           ACTION_TYPE.BAN,
           ACTION_VISIBILITY.VISIBLE,
           CAPTAINS.CAP_2
         ),
         new Action(
           ACTION_SCOPE.GLOBAL,
+          ACTION_OBJECT.CIV,
           ACTION_TYPE.BAN,
           ACTION_VISIBILITY.VISIBLE,
           CAPTAINS.CAP_1
         ),
         new Action(
           ACTION_SCOPE.GLOBAL,
+          ACTION_OBJECT.CIV,
           ACTION_TYPE.PICK,
           ACTION_VISIBILITY.VISIBLE,
           CAPTAINS.CAP_1
         ),
         new Action(
           ACTION_SCOPE.GLOBAL,
+          ACTION_OBJECT.CIV,
           ACTION_TYPE.PICK,
           ACTION_VISIBILITY.VISIBLE,
           CAPTAINS.CAP_2,
@@ -109,7 +127,9 @@ describe('draft configuration', ()  => {
     const expectedDraft = new Draft(
       'test',
       [
-        new Action(ACTION_SCOPE.GLOBAL,
+        new Action(
+          ACTION_SCOPE.GLOBAL,
+          ACTION_OBJECT.CIV,
           ACTION_TYPE.PICK,
           ACTION_VISIBILITY.VISIBLE,
           CAPTAINS.CAP_1,
