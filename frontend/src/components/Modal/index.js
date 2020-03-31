@@ -1,2 +1,1 @@
-import Modal from './component';
-export default Modal;
+export { default } from './Modal';

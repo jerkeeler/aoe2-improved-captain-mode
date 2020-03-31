@@ -1,2 +1,1 @@
-import Host from './component';
-export default Host;
+export { default } from './Host';

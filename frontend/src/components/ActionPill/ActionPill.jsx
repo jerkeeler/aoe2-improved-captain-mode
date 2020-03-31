@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { CAPTAINS } from '../../models';
-import styles from './styles.module.css';
+import styles from './ActionPill.module.css';
 
 const getCapClass = (captain) => {
   switch(captain) {

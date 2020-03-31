@@ -1,2 +1,1 @@
-import ActionPill from './component';
-export default ActionPill;
+export { default } from './ActionPill';

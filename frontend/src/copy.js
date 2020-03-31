@@ -16,6 +16,7 @@ export const objectName = {
   [ACTION_OBJECT.MAP]: 'Map',
   [ACTION_OBJECT.CIV]: 'Civ',
   [ACTION_OBJECT.ALL]: 'All',
+  [ACTION_OBJECT.BAN]: 'Ban',
 };
 
 export const typeName = {

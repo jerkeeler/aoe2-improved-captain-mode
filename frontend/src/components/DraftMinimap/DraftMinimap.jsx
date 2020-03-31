@@ -1,7 +1,7 @@
 import React from 'react';
 
 import DraftAction from '../DraftAction';
-import styles from './styles.module.css';
+import styles from './DraftMinimap.module.css';
 
 const DraftMinimap = ({ draftConfig, activeIndex = -1}) => {
   return (

@@ -1,2 +1,1 @@
-import DraftMinimap from './component';
-export default DraftMinimap;
+export { default } from './DraftMinimap';

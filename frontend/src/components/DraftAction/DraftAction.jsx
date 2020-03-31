@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { captainName, getActionName } from '../../copy';
+import { getActionName } from '../../copy';
 import ActionPill from '../ActionPill';
-import styles from './styles.module.css';
+import styles from './DraftAction.module.css';
 
 const DraftAction = ({ action, isActive }) => {
   return (

@@ -1,0 +1,9 @@
+.civList {
+  display: grid;
+  grid-gap: 10px;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, var(--icon-width));
+  list-style: none;
+  max-width: 100%;
+  padding: 0;
+}

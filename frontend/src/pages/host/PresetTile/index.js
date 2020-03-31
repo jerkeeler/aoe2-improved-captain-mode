@@ -1,2 +1,1 @@
-import DraftPresetTile from './component';
-export default DraftPresetTile;
+export { default } from './PresetTile';

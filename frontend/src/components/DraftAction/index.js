@@ -1,2 +1,1 @@
-import DraftAction from './component';
-export default DraftAction;
+export { default } from './DraftAction';

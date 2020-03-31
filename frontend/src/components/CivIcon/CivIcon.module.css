@@ -1,0 +1,21 @@
+.civIcon {
+  display: inline-block;
+  text-align: center;
+}
+
+.civIcon:hover {
+  cursor: pointer;
+}
+
+.civIcon:hover > .civImage {
+  box-shadow: var(--box-shadow) var(--color-text-secondary);
+}
+
+.civName {
+  margin: 0;
+}
+
+.civImage {
+  width: var(--icon-width);
+  border-radius: var(--border-radius);
+}

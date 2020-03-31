@@ -2,6 +2,7 @@ export const ACTION_OBJECT = {
   MAP: 'M',
   CIV: 'C',
   ALL: 'A',
+  BAN: 'B',
 };
 
 export const ACTION_TYPE = {

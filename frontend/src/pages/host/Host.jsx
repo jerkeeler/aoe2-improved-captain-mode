@@ -3,6 +3,7 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import CivList from '../../components/CivList/CivList';
 import DraftPresetsList from './PresetsList';
 
 const Host = () => (
@@ -13,6 +14,7 @@ const Host = () => (
       <a href="#" className="disabled"><strong>Customize</strong></a>
     </header>
     <DraftPresetsList />
+    <CivList onCivClick={(civ) => console.log(1111111, civ)} />
     <Footer />
   </Layout>
 );

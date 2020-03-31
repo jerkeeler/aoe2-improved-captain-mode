@@ -22,7 +22,7 @@ const setNames = (names) => ({
   names,
 });
 
-const setCaptainName = (name) => ({
+export const setCaptainName = (name) => ({
   type: ACTIONS.SET_CAPTAIN_NAME,
   name,
 });
@@ -40,8 +40,4 @@ export const getCivs = () => async (dispatch) => {
 export const getNames = () => async (dispatch) => {
   const names = await dataService.getNames();
   dispatch(setNames(names));
-};
-
-export const changeCaptainName =  (newName) => (dispatch) => {
-  dispatch(setCaptainName(newName));
 };

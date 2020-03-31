@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ROLES } from '../../../models';
 import Modal from '../../../components/Modal';
-import styles from './styles.module.css';
+import styles from './JoinDraftModal.module.css';
 
 const JoinDraftModal = ({ handleClose, show, draftToken }) => {
   const specClose = () => handleClose(ROLES.SPECTATOR);

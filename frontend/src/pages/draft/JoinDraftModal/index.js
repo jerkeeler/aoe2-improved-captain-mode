@@ -1,2 +1,1 @@
-import JoinDraftModal from './component';
-export default JoinDraftModal;
+export { default } from './JoinDraftModal';
