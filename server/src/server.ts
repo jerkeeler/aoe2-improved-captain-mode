@@ -1,14 +1,15 @@
 /**
  * Module dependencies.
  */
-const app = require('./app');
-const http = require('http');
+import app from './app';
+import http from 'http';
 
 /**
  * Create HTTP server.
  */
 
-const server = http.createServer(app);
+export const server = http.createServer(app);
+let port: number | string;
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -21,7 +22,11 @@ server.on('listening', onListening);
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error) {
+export function setPort(actualPort: number | string) {
+  port = actualPort;
+}
+
+function onError(error: any) {
   if (error.syscall !== 'listen') {
     throw error;
   }
@@ -51,9 +56,9 @@ function onError(error) {
 
 function onListening() {
   const addr = server.address();
+  if (addr === null)
+    return;
   const bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
 }
-
-module.exports = server;

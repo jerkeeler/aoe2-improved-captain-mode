@@ -1,6 +1,6 @@
-const { createLogger, transports, format } = require('winston');
+import { createLogger, transports, format, Logger } from 'winston';
 
-const { IS_PROD, LOG_LEVEL, MAX_LOG_FILES, MAX_LOG_SIZE } = require('./consts');
+import { IS_PROD, LOG_LEVEL, MAX_LOG_FILES, MAX_LOG_SIZE } from './consts';
 
 const { colorize, combine, timestamp, prettyPrint, simple, splat } = format;
 
@@ -22,10 +22,6 @@ const logger = createLogger({
   ],
 });
 
-logger.morganStream = {
-  write: message => logger.info(message),
-};
-
 if (IS_PROD) {
   logger.add(new transports.File({
     filename: './logs/info.log',
@@ -39,9 +35,8 @@ if (!IS_PROD) {
   logger.add(new transports.Console({
     level: 'debug',
     handleExceptions: true,
-    colorize: true,
     format: combine(colorize(), simple()),
   }));
 }
 
-module.exports = logger;
+export default logger;

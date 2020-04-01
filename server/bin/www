@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 require('dotenv').config();
-const logger = require('../src/logger');
-const app = require('../src/app');
-const sockets = require('../src/sockets');
-const server = require('../src/server');
+require('source-map-support').install();
+
+const logger = require('../build/logger').default;
+const app = require('../build/app').default;
+const sockets = require('../build/sockets').default;
+const { server, setPort } = require('../build/server');
 
 /**
  * Get port from environment and store in Express.
@@ -12,6 +14,7 @@ const port = normalizePort(process.env.PORT || '8000');
 app.set('port', port);
 
 logger.info(`Server listening on port ${port}`);
+setPort(port);
 server.listen(port);
 
 /**
