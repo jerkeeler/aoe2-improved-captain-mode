@@ -9,7 +9,7 @@
     "build-ts": "npx tsc",
     "start": "node ./bin/www",
     "test": "jest",
-    "clean": "rm -rf build/**/* && rm -rf build/* && touch -t '197001010000'build/.keep"
+    "clean": "rm -rf build/**/* && rm -rf build/*"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.3.2",
