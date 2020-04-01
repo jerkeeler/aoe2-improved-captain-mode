@@ -8,7 +8,7 @@ const {
   Action,
 } = require('../../src/models');
 const { inflatePresets, validateDraft, loadDraft } = require('../../src/drafts/config');
-const presets = require('../../src/data/drafts').presets;
+const presets = require('../../data/drafts').presets;
 const { InvalidActionError } = require('../../src/xceptions');
 const { validDraft, invalidDraft } = require('../fixtures');
 

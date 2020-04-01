@@ -23,9 +23,7 @@ export const createNewDraft = (draftConfig: Draft) => {
   if (token in drafts)
     throw new SameTokenError(token);
 
-  console.log(1111111, token);
   const draft = createActiveDraft(token, draftConfig);
-  console.log(2222222, draft);
   dispatch(newDraft(draft));
   return token;
 };

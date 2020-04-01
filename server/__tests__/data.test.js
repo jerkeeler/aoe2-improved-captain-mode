@@ -1,6 +1,6 @@
-const civs = require('../src/data/civilizations').civilizations;
-const maps = require('../src/data/maps').maps;
-const names = require('../src/data/names').names;
+const civs = require('../data/civilizations').civilizations;
+const maps = require('../data/maps').maps;
+const names = require('../data/names').names;
 
 test('civ ids are unique', () => {
   const ids = new Set(civs.map(c => c.id));

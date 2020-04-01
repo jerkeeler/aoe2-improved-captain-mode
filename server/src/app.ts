@@ -53,7 +53,6 @@ app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req: Request, res: Response, next: NextFunction) {
-  console.log(111111);
   next(createError(404));
 });
 

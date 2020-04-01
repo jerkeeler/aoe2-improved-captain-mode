@@ -6,10 +6,10 @@ import { inflatePresets, validateDraft } from '../drafts/config';
 import { createNewDraft } from '../drafts/actions';
 import { draftExists, getDraftConfig } from '../drafts/storeRo';
 
-import civilizations from '../data/civilizations.json';
-import maps from '../data/maps.json';
-import presets from '../data/drafts.json';
-import names from '../data/names.json';
+const civilizations = require('../../data/civilizations');
+const maps = require('../../data/maps');
+const presets = require('../../data/drafts');
+const names = require('../../data/names');
 
 const draftPresets = inflatePresets(presets.presets);
 
@@ -36,7 +36,6 @@ router.get('/drafts/:token', (req: Request, res: Response, next: NextFunction) =
   res.json(getDraftConfig(token));
 });
 router.post('/drafts', (req: Request, res: Response, next: NextFunction) => {
-  console.log(111111);
   validateDraft(req.body);
   const draftConfig = req.body;
   const newDraftToken = createNewDraft(draftConfig);

@@ -11,8 +11,8 @@ import {
 } from '../models';
 import { InvalidActionError, InvalidCivError, InvalidMapError } from '../xceptions';
 
-const civs = require('../data/civilizations').civilizations as Civ[];
-const maps = require('../data/maps').maps as Map[];
+const civs = require('../../data/civilizations').civilizations as Civ[];
+const maps = require('../../data/maps').maps as Map[];
 
 const civIds = new Set(civs.map(c => c.id));
 const mapIds = new Set(maps.map(m => m.id));
@@ -50,7 +50,6 @@ export function inflatePresets(presets: string[]) {
 }
 
 export function validateDraft(draft: Draft) {
-  console.log(999999, draft);
   validateCivs(draft.globalCivBans);
   validateMaps(draft.mapPool);
   draft.actions.map(validateAction);
