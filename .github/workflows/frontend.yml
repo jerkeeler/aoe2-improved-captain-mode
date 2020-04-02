@@ -22,22 +22,14 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    
-    - name: Install npx
-      run: npm install -g npx
 
     - name: Install dependencies
-      working-directory: server
+      working-directory: frontend
       run: npm install
     
     - name: Run linting
-      working-directory: server
+      working-directory: frontend
       run: npm run lint
       env:
         ENV: ci
 
-    - name: Run unit tests
-      working-direcotry: server
-      run: npm test
-      env:
-        ENV: ci
