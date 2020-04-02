@@ -9,14 +9,14 @@ export interface ActiveDraft {
   captain1: Captain;
   captain2: Captain;
   timer: number;
-  timerId: number | undefined;
+  timerId?: number;
   actionsTaken: Action[];
-  startTime: Date;
+  startTime: number;
 }
 
 export interface Captain {
-  token: string | undefined;
-  name: string | undefined;
+  token?: string;
+  name?: string;
   loaded: boolean;
   ready: boolean;
   bans: number[];

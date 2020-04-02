@@ -13,7 +13,7 @@ import {
 } from './consts';
 
 interface ExpressError extends Error {
-  status: number | undefined;
+  status?: number;
 }
 
 logger.info('Configuring express application...');

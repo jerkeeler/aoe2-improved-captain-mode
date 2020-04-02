@@ -1,4 +1,4 @@
-const { randomInt, randomToken } = require('../src/random');
+import { randomToken, randomInt } from '../src/random';
 
 test('randomInt', () => {
   let val = randomInt(1, 10);

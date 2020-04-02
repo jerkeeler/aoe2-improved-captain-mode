@@ -1,15 +1,12 @@
-const {
-  clearState,
-  createNewDraft,
-} = require('../../src/drafts/actions');
+import { safeClearState, createNewDraft } from '../../src/drafts/actions';
+import { SameTokenError } from '../../src/xceptions';
 
-const { SameTokenError } = require('../../src/xceptions');
 const validDraft = require('../fixtures').validDraft;
 
 
 describe('draft store actions', () => {
   afterAll(() => {
-    clearState();
+    safeClearState();
   });
 
   test('can create new draft', () => {

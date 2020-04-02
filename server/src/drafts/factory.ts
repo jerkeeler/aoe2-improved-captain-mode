@@ -1,3 +1,5 @@
+import { utc } from 'moment';
+
 import { Draft, DraftState } from '../models';
 import { ActiveDraft, Captain } from './types';
 
@@ -13,7 +15,7 @@ export function createActiveDraft(token: string, draftConfig: Draft): ActiveDraf
     timer: -1,
     timerId: undefined,
     actionsTaken: [],
-    startTime: new Date(),
+    startTime: utc().valueOf(),
   };
 }
 
