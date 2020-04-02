@@ -9,5 +9,8 @@ export function randomEl<T>(arr: T[]): T {
 }
 
 export function randomToken(tokenLength: number = TOKEN_LENGTH): string {
-  return Array(tokenLength).fill(0).map(() => randomEl(TOKEN_CHARS)).join('');
+  return Array(tokenLength)
+    .fill(0)
+    .map(() => randomEl(TOKEN_CHARS))
+    .join('');
 }

@@ -7,7 +7,7 @@ import { joinRoom } from './drafts/run';
 import { ConnectionInfo, JoinRoomData, SocketInfo } from './models';
 
 io.on('connection', (socket: Socket) => {
-  let connInfo: ConnectionInfo = {};
+  const connInfo: ConnectionInfo = {};
   const socketInfo: SocketInfo = {
     socket,
     connInfo,
@@ -18,7 +18,7 @@ io.on('connection', (socket: Socket) => {
   socket.on('join', (data: JoinRoomData) => joinRoom(socketInfo, data));
   // socket.on('ready', () => draftLogic.captainReady(socketInfo));
 
-  socket.on('disconnect', function() {
+  socket.on('disconnect', function () {
     // Do clean up code:
     // - If active and captain disconnect everyone
     // - If spectator decrement spec count and emit

@@ -16,8 +16,10 @@ export class InvalidMapError extends Error {
 
 export class InvalidActionError extends Error {
   constructor(invalidAction: Action) {
-    super(`Invalid action captain=${invalidAction.captain} scope=${invalidAction.scope}` +
-      `type=${invalidAction.type} visibility=${invalidAction.visibility}`);
+    super(
+      `Invalid action captain=${invalidAction.captain} scope=${invalidAction.scope}` +
+        `type=${invalidAction.type} visibility=${invalidAction.visibility}`,
+    );
     this.name = 'InvalidActionError';
   }
 }

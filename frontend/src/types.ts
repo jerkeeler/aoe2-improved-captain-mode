@@ -46,7 +46,7 @@ export enum ActionType {
 
 export enum ActionScope {
   GLOBAL = 'G', // Prevents all captains from choosing the same choice
-  EXCLUSIVE = 'E',  // Prevents only the captain that chose from choosing the same thing
+  EXCLUSIVE = 'E', // Prevents only the captain that chose from choosing the same thing
   NONE = '_',
 }
 

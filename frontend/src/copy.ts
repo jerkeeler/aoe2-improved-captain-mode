@@ -1,10 +1,4 @@
-import {
-  Captains,
-  ActionObject,
-  ActionType,
-  ActionScope,
-  ActionVisibility, Action,
-} from './types';
+import { Captains, ActionObject, ActionType, ActionScope, ActionVisibility, Action } from './types';
 
 export const captainName = {
   [Captains.CAP_1]: 'Cap 1',
@@ -41,8 +35,7 @@ function getRevealName(action: Action) {
 }
 
 function getCapActionName(action: Action) {
-  return `${objectName[action.object]} ` +
-    `${scopeName[action.scope]}${typeName[action.type]}`;
+  return `${objectName[action.object]} ${scopeName[action.scope]}${typeName[action.type]}`;
   // `${scopeName[action.scope]}${typeName[action.type]} ` +
   // `${visibilityName[action.visibility]}`;
 }
@@ -53,4 +46,3 @@ export function getActionName(action: Action) {
   }
   return getCapActionName(action);
 }
-
