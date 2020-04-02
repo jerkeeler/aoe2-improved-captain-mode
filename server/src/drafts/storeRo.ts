@@ -5,16 +5,13 @@ import { CanJoin } from './types';
 export function canJoin(token: string, role: Role): CanJoin {
   const { drafts } = store.getState();
   const state = drafts;
-  if (!state[token])
-    return { result: false, reason: 'Draft does not exist!' };
+  if (!state[token]) return { result: false, reason: 'Draft does not exist!' };
 
   const draft = state[token];
   draft.state;
-  if (!(draft.state === DraftState.WAITING))
-    return { result: false, reason: 'Cannot join an ongoing draft!' };
-  if (role === Role.SPECTATOR || !draft.captain1.loaded || !draft.captain2.loaded)
-    return { result: true, reason: '' };
-  return { result: false, reason: 'All captains are loaded, you cannot join this draft as a captain.'}
+  if (!(draft.state === DraftState.WAITING)) return { result: false, reason: 'Cannot join an ongoing draft!' };
+  if (role === Role.SPECTATOR || !draft.captain1.loaded || !draft.captain2.loaded) return { result: true, reason: '' };
+  return { result: false, reason: 'All captains are loaded, you cannot join this draft as a captain.' };
 }
 
 export function draftExists(token: string): boolean {

@@ -7,10 +7,7 @@ export const store = configureStore({
   reducer: {
     drafts: draftReducer,
   },
-  middleware: [
-    ...getDefaultMiddleware(),
-    loggerMiddleware,
-  ],
+  middleware: [...getDefaultMiddleware(), loggerMiddleware],
 });
 export const dispatch = store.dispatch;
 

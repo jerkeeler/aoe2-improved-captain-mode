@@ -1,12 +1,12 @@
 // Handles all logic around actually running a draft
-import { ConnectionInfo, JoinRoomData, Role, SocketInfo } from '../models';
+import { JoinRoomData, Role, SocketInfo } from '../models';
 import { randomToken } from '../random';
 import logger from '../logger';
-import { canJoin, areCaptainsReady } from './storeRo';
+import { canJoin } from './storeRo';
 
 import { joinSpectator, joinCaptain } from './actions';
 
-export function joinRoom({ socket, connInfo }: SocketInfo, { token, role, name }: JoinRoomData) {
+export function joinRoom({ socket, connInfo }: SocketInfo, { token, role, name }: JoinRoomData): void {
   const joinResult = canJoin(token, role);
   if (!joinResult.result) {
     socket.emit('disconnectMessage', joinResult.reason);
@@ -41,7 +41,3 @@ export function joinRoom({ socket, connInfo }: SocketInfo, { token, role, name }
 //   if (areCaptainsReady(connInfo.draftToken))
 //     io.in(connInfo.draftToken).emit('ready');
 // }
-
-function startDraft() {
-
-}

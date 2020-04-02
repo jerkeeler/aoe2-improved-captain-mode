@@ -12,31 +12,30 @@ import {
 import { Draft } from '../models';
 
 // ACTION CREATORS
-export const safeClearState = () => {
-  if (!IS_PROD)
-    dispatch(clearState());
+export const safeClearState = (): void => {
+  if (!IS_PROD) dispatch(clearState());
 };
 
-export const createNewDraft = (draftConfig: Draft) => {
+export const createNewDraft = (draftConfig: Draft): string => {
   const { drafts } = store.getState();
   const token = randomToken();
-  if (token in drafts)
-    throw new SameTokenError(token);
+  if (token in drafts) throw new SameTokenError(token);
 
   const draft = createActiveDraft(token, draftConfig);
   dispatch(newDraft(draft));
   return token;
 };
 
-export const joinSpectator = (token: string) => {
+export const joinSpectator = (token: string): void => {
   dispatch(joinSpectatorAction({ token }));
 };
 
-export const joinCaptain = (token: string, captainToken: string, name: string) => {
-  dispatch(joinCaptainAction({
-    token,
-    captainToken,
-    name,
-  }));
+export const joinCaptain = (token: string, captainToken: string, name: string): void => {
+  dispatch(
+    joinCaptainAction({
+      token,
+      captainToken,
+      name,
+    }),
+  );
 };
-

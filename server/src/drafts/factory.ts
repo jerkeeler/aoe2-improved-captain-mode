@@ -3,6 +3,17 @@ import { utc } from 'moment';
 import { Draft, DraftState } from '../models';
 import { ActiveDraft, Captain } from './types';
 
+function createCaptain(): Captain {
+  return {
+    token: undefined,
+    name: undefined,
+    loaded: false,
+    ready: false,
+    bans: [],
+    picks: [],
+  };
+}
+
 export function createActiveDraft(token: string, draftConfig: Draft): ActiveDraft {
   return {
     state: DraftState.WAITING,
@@ -16,16 +27,5 @@ export function createActiveDraft(token: string, draftConfig: Draft): ActiveDraf
     timerId: undefined,
     actionsTaken: [],
     startTime: utc().valueOf(),
-  };
-}
-
-function createCaptain(): Captain {
-  return {
-    token: undefined,
-    name: undefined,
-    loaded: false,
-    ready: false,
-    bans: [],
-    picks: [],
   };
 }
