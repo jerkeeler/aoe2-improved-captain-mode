@@ -34,7 +34,7 @@ jobs:
         ENV: ci
 
     - name: Run unit tests
-      working-direcotry: server
+      working-directory: server
       run: npm test
       env:
         ENV: ci
