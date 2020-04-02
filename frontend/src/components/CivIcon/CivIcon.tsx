@@ -11,9 +11,7 @@ interface Props {
 const CivIcon = ({ civ, onClick }: Props) => (
   <li className={styles.civIcon} onClick={() => onClick(civ)}>
     <img className={styles.civImage} src={`/static/img/units/${civ.uniqueUnit}.jpg`} alt={civ.uniqueUnit} />
-    <p className={styles.civName}>
-      {civ.name}
-    </p>
+    <p className={styles.civName}>{civ.name}</p>
   </li>
 );
 

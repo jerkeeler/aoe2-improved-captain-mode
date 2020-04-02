@@ -19,8 +19,7 @@ const PresetModal = ({ preset, handleClose, show }: Props) => {
   const history = useHistory();
 
   const createDraftAsync = async () => {
-    if (loading)
-      return;
+    if (loading) return;
     setLoading(true);
     const token = await createDraft(preset);
     setLoading(false);
@@ -29,14 +28,18 @@ const PresetModal = ({ preset, handleClose, show }: Props) => {
 
   return (
     <Modal handleClose={handleClose} show={show}>
-      <p>Do you wish to create a new draft with preset <strong>"{preset.name}"</strong>?</p>
+      <p>
+        Do you wish to create a new draft with preset <strong>"{preset.name}"</strong>?
+      </p>
       <DraftMinimap draftConfig={preset} />
       <div className={styles.buttons}>
         <button onClick={createDraftAsync}>Create</button>
-        <button className="outline" onClick={handleClose}>Cancel</button>
+        <button className="outline" onClick={handleClose}>
+          Cancel
+        </button>
       </div>
     </Modal>
-  )
+  );
 };
 
-export default PresetModal
+export default PresetModal;

@@ -9,20 +9,24 @@ import Layout from '../../components/Layout';
 
 const Draft = () => {
   const { token } = useParams();
-  const { name } = useSelector(({ data: { captainName }}: RootState) => ({
+  const { name } = useSelector(({ data: { captainName } }: RootState) => ({
     name: captainName,
   }));
 
   useEffect(() => {
     const socket = openSocket();
     socket.emit('join', { token, name, role: Role.SPECTATOR });
-    return () => {socket.disconnect()};
+    return () => {
+      socket.disconnect();
+    };
   }, [token, name]);
 
   return (
     <Layout>
       <h1>New Draft ({token})</h1>
-      <p>You are a: <strong>{Role.SPECTATOR}</strong></p>
+      <p>
+        You are a: <strong>{Role.SPECTATOR}</strong>
+      </p>
       <p>Your name is: {name}</p>
     </Layout>
   );

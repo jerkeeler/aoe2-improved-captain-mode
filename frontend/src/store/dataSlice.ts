@@ -7,7 +7,7 @@ import { randomEl } from '../random';
 import * as dataService from '../services/data';
 
 const initialState: DataState = {
-  civs:[],
+  civs: [],
   maps: [],
   names: [],
   presets: [],
@@ -35,7 +35,7 @@ export const slice = createSlice({
     setPresets: (state, action: PayloadAction<Draft[]>) => {
       state.presets = action.payload;
     },
-  }
+  },
 });
 
 export const { setCaptainName } = slice.actions;

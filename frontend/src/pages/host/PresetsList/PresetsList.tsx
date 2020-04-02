@@ -9,7 +9,9 @@ const DraftPresetsList = () => {
   const { presets } = useSelector(({ data: { presets } }: RootState) => ({ presets }));
   return (
     <div className={styles.draftGrid}>
-      {presets.map(d => <DraftPresetTile preset={d} key={d.name} />)}
+      {presets.map((d) => (
+        <DraftPresetTile preset={d} key={d.name} />
+      ))}
     </div>
   );
 };

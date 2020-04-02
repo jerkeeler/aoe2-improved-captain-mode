@@ -5,17 +5,12 @@ import { getMaps, getCivs, getNames, getDraftPresets } from '../store/dataSlice'
 import { AppDispatch } from '../store';
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
 const loadData = (setLoading: (loading: boolean) => void, dispatch: AppDispatch) => () => {
-  (async function() {
-    await Promise.all([
-      dispatch(getMaps()),
-      dispatch(getCivs()),
-      dispatch(getNames()),
-      dispatch(getDraftPresets()),
-    ]);
+  (async function () {
+    await Promise.all([dispatch(getMaps()), dispatch(getCivs()), dispatch(getNames()), dispatch(getDraftPresets())]);
     setLoading(false);
   })();
 };
@@ -25,7 +20,13 @@ const DataPrefetch = ({ children }: Props) => {
   const dispatch = useDispatch();
   useEffect(loadData(setLoading, dispatch), []);
 
-  return loading ? <main><p>loading...</p></main> : <>{children}</>;
+  return loading ? (
+    <main>
+      <p>loading...</p>
+    </main>
+  ) : (
+    <>{children}</>
+  );
 };
 
 export default DataPrefetch;

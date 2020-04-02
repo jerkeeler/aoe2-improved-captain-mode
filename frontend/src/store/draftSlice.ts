@@ -33,11 +33,13 @@ export const slice = createSlice({
 
 export const getDraftConfig = (token: string, role: Role): AppThunk => async (dispatch) => {
   const draftConfig = await draftService.getDraftConfig(token);
-  dispatch(slice.actions.setActiveDraftInfo({
-    token,
-    draftConfig,
-    role,
-  }));
+  dispatch(
+    slice.actions.setActiveDraftInfo({
+      token,
+      draftConfig,
+      role,
+    }),
+  );
 };
 
 export default slice.reducer;

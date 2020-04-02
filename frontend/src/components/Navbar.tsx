@@ -15,8 +15,12 @@ const Navbar = () => {
       <Link to="/">Home</Link>
       <ul>
         <NameNavItem />
-        <li><Link to="/host">Host</Link></li>
-        <li><a onClick={showJoinModal}>Join</a></li>
+        <li>
+          <Link to="/host">Host</Link>
+        </li>
+        <li>
+          <a onClick={showJoinModal}>Join</a>
+        </li>
       </ul>
     </nav>
   );

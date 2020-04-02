@@ -16,10 +16,7 @@ interface Props {
 
 const NameChooser = ({ show, handleClose, hideCancel = false }: Props) => {
   const dispatch = useDispatch();
-  const {
-    captainName,
-    names,
-  } = useSelector(({ data: { captainName, names }}: RootState) => ({ captainName, names }));
+  const { captainName, names } = useSelector(({ data: { captainName, names } }: RootState) => ({ captainName, names }));
   const [localCaptainName, setLocalCaptainName] = useState(captainName);
 
   const randomName = () => {
@@ -32,7 +29,7 @@ const NameChooser = ({ show, handleClose, hideCancel = false }: Props) => {
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => setLocalCaptainName(e.target.value);
 
-  const close = ()  => {
+  const close = () => {
     setLocalCaptainName(captainName);
     handleClose(captainName);
   };
@@ -47,11 +44,17 @@ const NameChooser = ({ show, handleClose, hideCancel = false }: Props) => {
       <p>What would you like your captain name to be?</p>
       <div className={styles.form}>
         <input value={localCaptainName} onChange={onChange} placeholder="Boulder" />
-        <span className={styles.icon} onClick={randomName}>🔄</span>
+        <span className={styles.icon} onClick={randomName}>
+          🔄
+        </span>
       </div>
       <div className={styles.buttons}>
         <button onClick={setName}>Set Name</button>
-        {!hideCancel && <button className="outline" onClick={close}><em>Cancel</em></button>}
+        {!hideCancel && (
+          <button className="outline" onClick={close}>
+            <em>Cancel</em>
+          </button>
+        )}
       </div>
     </Modal>
   );

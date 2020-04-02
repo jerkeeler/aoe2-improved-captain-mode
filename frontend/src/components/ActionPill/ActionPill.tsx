@@ -9,7 +9,7 @@ interface Props {
 }
 
 const getCapClass = (captain: number) => {
-  switch(captain) {
+  switch (captain) {
     case Captains.CAP_1:
       return styles.captain1;
     case Captains.CAP_2:

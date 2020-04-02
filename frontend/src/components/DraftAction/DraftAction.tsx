@@ -6,8 +6,8 @@ import styles from './DraftAction.module.css';
 import { Action } from '../../types';
 
 interface Props {
-  action: Action,
-  isActive: boolean
+  action: Action;
+  isActive: boolean;
 }
 
 const DraftAction = ({ action, isActive }: Props) => {

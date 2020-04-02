@@ -15,8 +15,7 @@ const JoinModal = ({ handleClose, show }: Props) => {
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => setToken(e.target.value);
   const onJoin = () => {
-    if (!token)
-      return;
+    if (!token) return;
     history.push(`/draft/${token}`);
   };
 
@@ -28,7 +27,9 @@ const JoinModal = ({ handleClose, show }: Props) => {
       </div>
       <div className={styles.buttons}>
         <button onClick={onJoin}>Join</button>
-        <button onClick={handleClose} className="outline">Close</button>
+        <button onClick={handleClose} className="outline">
+          Close
+        </button>
       </div>
     </Modal>
   );

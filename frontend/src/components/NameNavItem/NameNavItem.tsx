@@ -14,7 +14,9 @@ const NameNavItem = () => {
   return (
     <>
       <NameChooser show={modal} handleClose={hideModal} />
-      <li className={styles.label} onClick={showModal}>{ captainName } ✏️</li>
+      <li className={styles.label} onClick={showModal}>
+        {captainName} ✏️
+      </li>
     </>
   );
 };
