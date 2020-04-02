@@ -3,7 +3,7 @@
   "name": "aoe2-improved-captains-mode",
   "version": "1.0.0",
   "scripts": {
-    "lint": "cd frontend && npm run lint && cd ../server && npm run lint"
+    "lint": "npx concurrently --names \"FRONTEND,SERVER\" -c \"bgCyan.bold,bgGreen.bold\" \"cd frontend && npm run lint\" \"cd server && npm run lint\""
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/jerkeeler/aoe2-improved-captain-mode#readme",
   "devDependencies": {
+    "concurrently": "^5.1.0",
     "husky": "^4.2.3"
   },
   "husky": {
