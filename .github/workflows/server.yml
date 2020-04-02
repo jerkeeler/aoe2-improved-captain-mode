@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  build:
+  test-server:
 
     runs-on: ubuntu-latest
 
