@@ -1,0 +1,39 @@
+name: Frontend
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  test-frontend:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    # Setup node
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install dependencies
+      working-directory: frontend
+      run: npm install
+
+    - name: Run linting
+      working-directory: frontend
+      run: npm run lint
+
+    - name: Build production bundle
+      working-directory: frontend
+      run: npm run build
+      env:
+        CI: false
