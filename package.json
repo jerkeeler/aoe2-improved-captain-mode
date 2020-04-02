@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "name": "aoe2-improved-captains-mode",
+  "version": "1.0.0",
+  "scripts": {
+    "lint": "cd frontend && npm run lint && cd ../server && npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jerkeeler/aoe2-improved-captain-mode.git"
+  },
+  "author": "Jeremy Keeler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jerkeeler/aoe2-improved-captain-mode/issues"
+  },
+  "homepage": "https://github.com/jerkeeler/aoe2-improved-captain-mode#readme",
+  "devDependencies": {
+    "husky": "^4.2.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint"
+    }
+  }
+}
