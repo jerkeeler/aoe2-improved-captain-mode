@@ -1,5 +1,5 @@
 export function randomInt(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min)) + min;
+  return Math.floor(Math.random() * (max - min)) + min
 }
 
 export function randomEl<T>(arr: T[]): T {
