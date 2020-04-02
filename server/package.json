@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "watch": "npm run build-ts && npx concurrently --names \"TYPESCRIPT,SERVER\" -c \"bgGreen.bold,bgCyan.bold\" \"npm:watch-ts\" \"npm:watch-server\"",
+    "watch": "npm run build-ts && npx concurrently --names \"TYPESCRIPT,SERVER\" -c \"bgRed.bold,bgCyan.bold\" \"npm:watch-ts\" \"npm:watch-server\"",
     "watch-ts": "npx tsc -w",
     "watch-server": "npx nodemon ./bin/www",
     "build-ts": "npx tsc",
