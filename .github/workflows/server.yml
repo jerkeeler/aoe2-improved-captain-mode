@@ -39,7 +39,7 @@ jobs:
       env:
         ENV: ci
 
-    - name: Compile Typescript files
+    - name: Compile typescript files
       working-directory: server
-      run: npm run build-t
+      run: npm run build-ts
 
