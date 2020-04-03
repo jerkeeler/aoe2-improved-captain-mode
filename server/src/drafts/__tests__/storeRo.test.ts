@@ -1,8 +1,8 @@
-import { safeClearState, createNewDraft, joinCaptain } from '../../src/drafts/actions';
-import { Role } from '../../src/models';
-import { canJoin, draftExists } from '../../src/drafts/storeRo';
+import { safeClearState, createNewDraft, joinCaptain } from '../actions';
+import { Role } from '../../models';
+import { canJoin, draftExists } from '../storeRo';
 
-const validDraft = require('../fixtures').validDraft;
+import { validDraft } from '../../../__tests__/fixtures';
 
 describe('draft store RO API', () => {
   let draftToken: string;
@@ -19,7 +19,7 @@ describe('draft store RO API', () => {
     expect(canJoin(draftToken, Role.CAPTAIN).result).toBe(true);
   });
 
-  test('can join false', ()  => {
+  test('can join false', () => {
     joinCaptain(draftToken, 'A', 'C1');
     joinCaptain(draftToken, 'B', 'C2');
     expect(canJoin(draftToken, Role.CAPTAIN).result).toBe(false);
@@ -33,4 +33,3 @@ describe('draft store RO API', () => {
     expect(draftExists('?')).toBe(false);
   });
 });
-

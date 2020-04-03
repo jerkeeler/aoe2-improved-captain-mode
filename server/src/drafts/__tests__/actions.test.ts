@@ -1,8 +1,7 @@
-import { safeClearState, createNewDraft } from '../../src/drafts/actions';
-import { SameTokenError } from '../../src/xceptions';
+import { safeClearState, createNewDraft } from '../actions';
+import { SameTokenError } from '../../xceptions';
 
-const validDraft = require('../fixtures').validDraft;
-
+import { validDraft } from '../../../__tests__/fixtures';
 
 describe('draft store actions', () => {
   afterAll(() => {
