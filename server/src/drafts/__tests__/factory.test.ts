@@ -1,8 +1,8 @@
-import { createActiveDraft } from '../../src/drafts/factory';
-import { DraftState } from '../../src/models';
-import { ActiveDraft } from '../../src/drafts/types';
+import { createActiveDraft } from '../factory';
+import { DraftState } from '../../models';
+import { ActiveDraft } from '../types';
 
-const validDraft = require('../fixtures').validDraft;
+import { validDraft } from '../../../__tests__/fixtures';
 
 const now = jest.fn(() => 1487076708000);
 

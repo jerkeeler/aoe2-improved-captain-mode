@@ -1,13 +1,14 @@
 import supertest from 'supertest';
 
-import { safeClearState, createNewDraft } from '../../src/drafts/actions';
-import app from '../../src/app';
-const validDraft = require('../fixtures').validDraft;
+import { safeClearState, createNewDraft } from '../../drafts/actions';
+import app from '../../app';
+
+import { validDraft } from '../../../__tests__/fixtures';
 
 const request = supertest(app);
 
 describe('api routes', () => {
-  afterEach(()  => {
+  afterEach(() => {
     safeClearState();
   });
 
@@ -66,13 +67,13 @@ describe('api routes', () => {
           type: 'P',
           visibility: 'V',
           captain: 1,
-        }
+        },
       ],
       globalCivBans: [],
       mapPool: [],
     });
     expect(res.status).toEqual(200);
-    expect(res.body.draftToken).not.toBeNull()
+    expect(res.body.draftToken).not.toBeNull();
   });
 
   test('/drafts POST invalid action', async () => {

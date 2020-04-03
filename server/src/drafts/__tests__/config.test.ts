@@ -1,18 +1,12 @@
-import {
-  ActionObject,
-  ActionScope,
-  ActionType,
-  ActionVisibility,
-  Captains,
-  Draft,
-} from '../../src/models';
-import { inflatePresets, validateDraft } from '../../src/drafts/config';
-import { InvalidActionError } from '../../src/xceptions';
+import { ActionObject, ActionScope, ActionType, ActionVisibility, Captains, Draft } from '../../models';
+import { inflatePresets, validateDraft } from '../config';
+import { InvalidActionError } from '../../xceptions';
 
-const presets = require('../../data/drafts').presets;
-const { validDraft, invalidDraft } = require('../fixtures');
+import { validDraft, invalidDraft } from '../../../__tests__/fixtures';
 
-describe('draft configuration', ()  => {
+const presets = require('../../../data/drafts').presets;
+
+describe('draft configuration', () => {
   test('inflatePresets', () => {
     const inflatedPresets = inflatePresets(presets);
     expect(inflatedPresets.length).toBeGreaterThan(0);
@@ -87,7 +81,7 @@ describe('draft configuration', ()  => {
     expect(() => validateDraft(validDraft)).not.toThrow();
   });
 
-  test('validateDraft invalid', ()  => {
+  test('validateDraft invalid', () => {
     expect(() => validateDraft(invalidDraft)).toThrow(InvalidActionError);
   });
 });

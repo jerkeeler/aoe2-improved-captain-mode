@@ -22,7 +22,7 @@ const getCapClass = (captain: number) => {
 const ActionPill = ({ captain, isActive }: Props) => {
   const capClass = getCapClass(captain);
   const activeClass = isActive ? styles.active : '';
-  return <span className={`${styles.pill} ${capClass} ${activeClass}`} />;
+  return <span className={`${styles.pill} ${capClass} ${activeClass}`} data-testid="actionPill" />;
 };
 
 export default ActionPill;

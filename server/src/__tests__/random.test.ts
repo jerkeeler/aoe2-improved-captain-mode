@@ -1,4 +1,4 @@
-import { randomToken, randomInt } from '../src/random';
+import { randomToken, randomInt } from '../random';
 
 test('randomInt', () => {
   let val = randomInt(1, 10);
@@ -9,7 +9,7 @@ test('randomInt', () => {
   expect(val).toEqual(1);
 });
 
-test('randomToken', ()  => {
+test('randomToken', () => {
   const token = randomToken();
   expect(token).not.toBeNull();
   expect(token.length).toEqual(6);

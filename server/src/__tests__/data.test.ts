@@ -1,8 +1,8 @@
-import { Civ, Map } from '../src/models';
+import { Civ, Map } from '../models';
 
-const civs = require('../data/civilizations').civilizations;
-const maps = require('../data/maps').maps;
-const names = require('../data/names').names;
+const civs = require('../../data/civilizations').civilizations;
+const maps = require('../../data/maps').maps;
+const names = require('../../data/names').names;
 
 test('civ ids are unique', () => {
   const ids = new Set(civs.map((c: Civ) => c.id));
