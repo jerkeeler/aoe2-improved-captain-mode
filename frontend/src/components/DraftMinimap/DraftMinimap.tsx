@@ -1,8 +1,8 @@
 import React from 'react';
+import { Draft } from '@icm/shared/types';
 
 import DraftAction from '../DraftAction';
 import styles from './DraftMinimap.module.css';
-import { Draft } from '../../types';
 
 interface Props {
   draftConfig: Draft;

@@ -1,4 +1,4 @@
-import { Captains, ActionObject, ActionType, ActionScope, ActionVisibility, Action } from './types';
+import { Captains, ActionObject, ActionType, ActionScope, ActionVisibility, Action } from '@icm/shared/types';
 
 export const captainName = {
   [Captains.CAP_1]: 'Cap 1',

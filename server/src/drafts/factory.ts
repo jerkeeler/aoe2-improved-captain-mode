@@ -1,6 +1,7 @@
+import { Draft, DraftState } from '@icm/shared/types';
+
 import { utc } from 'moment';
 
-import { Draft, DraftState } from '../models';
 import { ActiveDraft, Captain } from './types';
 
 function createCaptain(): Captain {

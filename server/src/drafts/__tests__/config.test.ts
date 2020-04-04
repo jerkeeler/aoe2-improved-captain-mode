@@ -1,9 +1,9 @@
-import { ActionObject, ActionScope, ActionType, ActionVisibility, Captains, Draft } from '../../models';
+import { ActionObject, ActionScope, ActionType, ActionVisibility, Captains, Draft } from '@icm/shared/types';
+
 import { inflatePresets, validateDraft } from '../config';
 import { InvalidActionError } from '../../xceptions';
 
 import { validDraft, invalidDraft } from '../../../__tests__/fixtures';
-
 const presets = require('../../../data/drafts').presets;
 
 describe('draft configuration', () => {

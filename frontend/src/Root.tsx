@@ -14,7 +14,7 @@ const Root = () => (
       <BrowserRouter>
         <Route path="/" exact component={Home} />
         <Route path="/host" component={Host} />
-        <Route path="/draft/:token" component={Draft} />
+        <Route path="/draft/:draftToken" component={Draft} />
       </BrowserRouter>
     </DataPrefetch>
   </Provider>

@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-import { Civ, Map, Draft } from '../types';
+import { Civ, Map, Draft } from '@icm/shared/types';
 
 export async function getCivilizations(): Promise<Civ[]> {
   const response = await axios.get('/api/civilizations');

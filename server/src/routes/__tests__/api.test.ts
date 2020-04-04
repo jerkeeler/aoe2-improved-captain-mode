@@ -46,7 +46,7 @@ describe('api routes', () => {
   });
 
   test('/drafts invalid token', async () => {
-    const res = await request.get('/api/drafts?token=INVALID');
+    const res = await request.get('/api/drafts/INVALID');
     expect(res.status).toEqual(404);
   });
 

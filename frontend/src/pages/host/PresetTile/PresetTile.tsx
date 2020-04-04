@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { Draft } from '@icm/shared/types';
 
 import PresetModal from '../PresetModal';
 import styles from './PresetTile.module.css';
-import { Draft } from '../../../types';
 
 interface Props {
   preset: Draft;

@@ -1,29 +1,28 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router';
-import openSocket from 'socket.io-client';
+// import openSocket from 'socket.io-client';
+import { Role } from '@icm/shared/types';
 
-import { Role } from '../../types';
 import { RootState } from '../../store';
 import Layout from '../../components/Layout';
 
 const Draft = () => {
-  const { token } = useParams();
-  const { name } = useSelector(({ data: { captainName } }: RootState) => ({
+  const { name, draftToken } = useSelector(({ data: { captainName }, drafts: { activeDraftToken } }: RootState) => ({
     name: captainName,
+    draftToken: activeDraftToken,
   }));
 
-  useEffect(() => {
-    const socket = openSocket();
-    socket.emit('join', { token, name, role: Role.SPECTATOR });
-    return () => {
-      socket.disconnect();
-    };
-  }, [token, name]);
+  // useEffect(() => {
+  //   const socket = openSocket();
+  //   socket.emit('join', { draftToken, name, role: Role.SPECTATOR });
+  //   return () => {
+  //     socket.disconnect();
+  //   };
+  // }, [draftToken, name]);
 
   return (
     <Layout>
-      <h1>New Draft ({token})</h1>
+      <h1>New Draft ({draftToken})</h1>
       <p>
         You are a: <strong>{Role.SPECTATOR}</strong>
       </p>

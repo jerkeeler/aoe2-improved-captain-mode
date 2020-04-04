@@ -1,7 +1,6 @@
 import { Request, Response, Router } from 'express';
 
 import logger from '../logger';
-
 import { inflatePresets, validateDraft } from '../drafts/config';
 import { createNewDraft } from '../drafts/actions';
 import { draftExists, getDraftConfig } from '../drafts/storeRo';
@@ -29,13 +28,13 @@ router.get('/names', (req: Request, res: Response) => {
 router.get('/drafts/presets', (req: Request, res: Response) => {
   res.json({ presets: draftPresets });
 });
-router.get('/drafts/:token', (req: Request, res: Response) => {
-  const token = req.params.token;
-  if (!token || !draftExists(token)) {
+router.get('/drafts/:draftToken', (req: Request, res: Response) => {
+  const { draftToken } = req.params;
+  if (!draftToken || !draftExists(draftToken)) {
     res.sendStatus(404);
     return;
   }
-  res.json(getDraftConfig(token));
+  res.json(getDraftConfig(draftToken));
 });
 router.post('/drafts', (req: Request, res: Response) => {
   validateDraft(req.body);

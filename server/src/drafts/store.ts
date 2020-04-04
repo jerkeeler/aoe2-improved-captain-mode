@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { loggerMiddleware } from './middleware';
 
+import { loggerMiddleware } from './middleware';
 import draftReducer from './draftSlice';
 
 export const store = configureStore({

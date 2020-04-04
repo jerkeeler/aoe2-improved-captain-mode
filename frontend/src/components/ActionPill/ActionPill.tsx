@@ -1,6 +1,6 @@
 import React from 'react';
+import { Captains } from '@icm/shared/types';
 
-import { Captains } from '../../types';
 import styles from './ActionPill.module.css';
 
 interface Props {

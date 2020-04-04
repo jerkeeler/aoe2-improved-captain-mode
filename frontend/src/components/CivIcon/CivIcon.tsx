@@ -1,6 +1,6 @@
 import React from 'react';
+import { Civ } from '@icm/shared/types';
 
-import { Civ } from '../../types';
 import styles from './CivIcon.module.css';
 
 interface Props {

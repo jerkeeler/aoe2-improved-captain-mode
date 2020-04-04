@@ -1,4 +1,14 @@
-import { ActionObject, ActionScope, ActionType, ActionVisibility, Captains, Civ, Map, Draft, Action } from '../models';
+import {
+  ActionObject,
+  ActionScope,
+  ActionType,
+  ActionVisibility,
+  Captains,
+  Civ,
+  Map,
+  Draft,
+  Action,
+} from '@icm/shared/types';
 import { InvalidActionError, InvalidCivError, InvalidMapError } from '../xceptions';
 
 const civs = require('../../data/civilizations').civilizations as Civ[];

@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Civ, Draft, Map } from '@icm/shared/types';
+import { randomEl } from '@icm/shared/random';
 
-import { Civ, Draft, Map } from '../types';
 import { DataState } from './types';
 import { AppThunk } from './index';
-import { randomEl } from '../random';
 import * as dataService from '../services/data';
 
 const initialState: DataState = {

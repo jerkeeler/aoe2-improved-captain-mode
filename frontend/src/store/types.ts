@@ -1,4 +1,4 @@
-import { Draft, Civ, Map, Role } from '../types';
+import { Draft, Civ, Map, Role } from '@icm/shared/types';
 
 export interface DataState {
   civs: Civ[];
@@ -10,7 +10,7 @@ export interface DataState {
 }
 
 export interface DraftState {
-  activeDraftStep: number;
+  availableRoles: Role[];
   activeDraftToken?: string;
   activeDraftConfig?: Draft;
   role?: Role;

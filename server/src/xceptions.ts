@@ -1,4 +1,4 @@
-import { Action } from './models';
+import { Action } from '@icm/shared/types';
 
 export class InvalidCivError extends Error {
   constructor(value: number) {

@@ -1,5 +1,6 @@
+import { Role } from '@icm/shared/types';
+
 import { safeClearState, createNewDraft, joinCaptain } from '../actions';
-import { Role } from '../../models';
 import { canJoin, draftExists } from '../storeRo';
 
 import { validDraft } from '../../../__tests__/fixtures';

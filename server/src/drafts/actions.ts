@@ -1,3 +1,5 @@
+import { Draft } from '@icm/shared/types';
+
 import { IS_PROD } from '../consts';
 import { SameTokenError } from '../xceptions';
 import store, { dispatch } from './store';
@@ -8,8 +10,8 @@ import {
   newDraft,
   joinSpectator as joinSpectatorAction,
   joinCaptain as joinCaptainAction,
+  readyCaptain as readyCaptainAction,
 } from './draftSlice';
-import { Draft } from '../models';
 
 // ACTION CREATORS
 export const safeClearState = (): void => {
@@ -36,6 +38,15 @@ export const joinCaptain = (token: string, captainToken: string, name: string): 
       token,
       captainToken,
       name,
+    }),
+  );
+};
+
+export const readyCaptain = (draftToken: string, captainToken: string): void => {
+  dispatch(
+    readyCaptainAction({
+      draftToken,
+      captainToken,
     }),
   );
 };

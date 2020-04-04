@@ -1,9 +1,9 @@
 import React from 'react';
+import { Action } from '@icm/shared/types';
 
 import { getActionName } from '../../copy';
 import ActionPill from '../ActionPill';
 import styles from './DraftAction.module.css';
-import { Action } from '../../types';
 
 interface Props {
   action: Action;

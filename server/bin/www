@@ -4,7 +4,7 @@ require('source-map-support').install();
 
 const logger = require('../build/logger').default;
 const app = require('../build/app').default;
-const sockets = require('../build/sockets').default;
+const sockets = require('../build/socket').default;
 const { server, setPort } = require('../build/server');
 
 /**
