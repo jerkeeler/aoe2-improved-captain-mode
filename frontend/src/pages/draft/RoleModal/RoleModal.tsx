@@ -33,11 +33,14 @@ const RoleModal = ({ handleClose, show }: Props) => {
     handleClose();
   };
 
+  const allowCaptain = availableRoles.includes(Role.CAPTAIN);
+
   return (
     <Modal show={show}>
       <p>In what capacity would you like to join this draft?</p>
       <div className={styles.buttons}>
-        <button onClick={() => chooseRole(Role.CAPTAIN)}>Captain</button>
+        {allowCaptain && <button onClick={() => chooseRole(Role.CAPTAIN)}>Captain</button>}
+        {!allowCaptain && <span />}
         <button className="outline" onClick={() => chooseRole(Role.SPECTATOR)}>
           Spectator
         </button>

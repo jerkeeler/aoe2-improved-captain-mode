@@ -32,10 +32,10 @@ export const joinSpectator = (token: string): void => {
   dispatch(joinSpectatorAction({ token }));
 };
 
-export const joinCaptain = (token: string, captainToken: string, name: string): void => {
+export const joinCaptain = (draftToken: string, captainToken: string, name: string): void => {
   dispatch(
     joinCaptainAction({
-      token,
+      draftToken,
       captainToken,
       name,
     }),

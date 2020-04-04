@@ -12,6 +12,7 @@ import { joinSpectator, joinCaptain, readyCaptain } from './actions';
 export function joinRoom({ socket, connInfo, io }: SocketInfo, { draftToken, role, name }: JoinRoomMessage): void {
   const joinResult = canJoin(draftToken, role);
   if (!joinResult.result) {
+    logger.info(`Attempted to join draft ${draftToken} but not allowed! role=${role}`);
     socket.emit(SocketEvent.DISCONNECT_MESSAGE, joinResult.reason);
     return;
   }
