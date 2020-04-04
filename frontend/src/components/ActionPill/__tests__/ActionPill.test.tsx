@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import { Captains } from '@icm/shared/types';
 
 import ActionPill from '../ActionPill';
-import { Captains } from '../../../types';
 
 test('renders an active ActionPill', () => {
   const { getByTestId } = render(<ActionPill captain={Captains.CAP_1} isActive={true} />);

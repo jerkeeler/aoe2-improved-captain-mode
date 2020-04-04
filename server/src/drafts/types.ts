@@ -1,16 +1,20 @@
-import { Action, Draft, DraftState } from '../models';
+import { Action, Draft, DraftState } from '@icm/shared/types';
+
+export interface ActiveAction extends Action {
+  value?: number;
+}
 
 export interface ActiveDraft {
   state: DraftState;
   numSpectators: number;
   token: string;
   draftConfig: Draft;
-  currentActionIdx: -1;
+  currentActionIdx: number;
   captain1: Captain;
   captain2: Captain;
   timer: number;
   timerId?: number;
-  actionsTaken: Action[];
+  actionsTaken: ActiveAction[];
   startTime: number;
 }
 
@@ -35,5 +39,5 @@ export interface JoinSpectator {
 
 export interface CanJoin {
   result: boolean;
-  reason: string;
+  reason?: string;
 }

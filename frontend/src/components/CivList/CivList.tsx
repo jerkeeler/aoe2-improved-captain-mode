@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Civ } from '@icm/shared/types';
 
 import { RootState } from '../../store';
-import { Civ } from '../../types';
 import CivIcon from '../CivIcon';
 import styles from './CivList.module.css';
 

@@ -1,1 +1,1 @@
-export { default } from './Draft';
+export { default } from './DraftPage';

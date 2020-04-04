@@ -1,13 +1,4 @@
-import { randomToken, randomInt } from '../random';
-
-test('randomInt', () => {
-  let val = randomInt(1, 10);
-  expect(val).toBeLessThan(10);
-  expect(val).toBeGreaterThanOrEqual(1);
-
-  val = randomInt(1, 1);
-  expect(val).toEqual(1);
-});
+import { randomToken } from '../random';
 
 test('randomToken', () => {
   const token = randomToken();

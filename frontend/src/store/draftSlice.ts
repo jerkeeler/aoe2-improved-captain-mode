@@ -1,21 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Draft, Role } from '@icm/shared/types';
 
 import * as draftService from '../services/drafts';
 import { DraftState } from './types';
-import { Draft, Role } from '../types';
 import { AppThunk } from './index';
 
 const initialState: DraftState = {
-  activeDraftStep: -1,
+  availableRoles: [],
   activeDraftToken: undefined,
   activeDraftConfig: undefined,
   role: undefined,
 };
 
 interface ActiveDraftIno {
-  token: string;
+  draftToken: string;
   draftConfig: Draft;
-  role: Role;
+  availableRoles: Role[];
 }
 
 export const slice = createSlice({
@@ -24,20 +24,20 @@ export const slice = createSlice({
   reducers: {
     clearState: () => initialState,
     setActiveDraftInfo: (state, action: PayloadAction<ActiveDraftIno>) => {
-      state.activeDraftToken = action.payload.token;
+      state.activeDraftToken = action.payload.draftToken;
       state.activeDraftConfig = action.payload.draftConfig;
-      state.role = action.payload.role;
+      state.availableRoles = action.payload.availableRoles;
     },
   },
 });
 
-export const getDraftConfig = (token: string, role: Role): AppThunk => async (dispatch) => {
-  const draftConfig = await draftService.getDraftConfig(token);
+export const getDraftInfo = (draftToken: string): AppThunk => async (dispatch) => {
+  const { availableRoles, draftConfig } = await draftService.getDraftInfo(draftToken);
   dispatch(
     slice.actions.setActiveDraftInfo({
-      token,
-      draftConfig,
-      role,
+      draftToken,
+      draftConfig: draftConfig,
+      availableRoles: availableRoles,
     }),
   );
 };

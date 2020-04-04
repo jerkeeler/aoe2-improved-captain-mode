@@ -1,5 +1,6 @@
+import { DraftState } from '@icm/shared/types';
+
 import { createActiveDraft } from '../factory';
-import { DraftState } from '../../models';
 import { ActiveDraft } from '../types';
 
 import { validDraft } from '../../../__tests__/fixtures';

@@ -60,3 +60,25 @@ export enum Role {
   SPECTATOR = 'spectator',
   CAPTAIN = 'captain',
 }
+
+export enum DraftState {
+  WAITING,
+  IN_PROGRESS,
+  FINISHED,
+}
+
+export interface CaptainInfo {
+  name?: string;
+  loaded: boolean;
+  ready: boolean;
+}
+
+export interface DraftInfo {
+  state: DraftState;
+  numSpectators: number;
+  token: string;
+  currentActionIdx: number;
+  captain1: CaptainInfo;
+  captain2: CaptainInfo;
+  you?: Captains;
+}

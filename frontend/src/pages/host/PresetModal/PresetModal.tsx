@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
+import { Draft } from '@icm/shared/types';
 
 import { createDraft } from '../../../services/drafts';
 import Modal from '../../../components/Modal';
 import DraftMinimap from '../../../components/DraftMinimap';
-import { Draft } from '../../../types';
 
 import styles from './PresetModal.module.css';
 

@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "name": "@icm/shared",
+  "version": "1.0.0",
+  "description": "Shared typescript definitions",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "clean": "rm -rf dist/**/* && rm -rf dist/*",
+    "build": "npm run clean && npx tsc && cp package.json ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx tsc --noEmit && npx eslint 'src/**/*.{js,ts,tsx}'",
+    "lint-fix": "npx tsc --noEmit && npx eslint 'src/**/*.{js,ts,tsx}' --fix"
+  },
+  "author": "Jeremy Keeler",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^2.0.2",
+    "typescript": "^3.8.3"
+  }
+}

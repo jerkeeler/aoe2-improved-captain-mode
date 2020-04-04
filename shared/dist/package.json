@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "@icm/shared",
+  "version": "1.0.0",
+  "description": "Shared typescript definitions",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "clean": "rm -rf dist/**/* && rm -rf dist/*",
+    "build": "npm run clean && npx tsc && cp package.json ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeremy Keeler",
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  }
+}

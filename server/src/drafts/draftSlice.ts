@@ -8,6 +8,11 @@ interface DraftState {
 
 const initialState: DraftState = {};
 
+interface ReadyCaptain {
+  draftToken: string;
+  captainToken: string;
+}
+
 export const draftSlice = createSlice({
   name: 'draft',
   initialState,
@@ -25,9 +30,19 @@ export const draftSlice = createSlice({
     joinSpectator: (state, action: PayloadAction<JoinSpectator>): void => {
       state[action.payload.token].numSpectators++;
     },
+    readyCaptain: (state, action: PayloadAction<ReadyCaptain>): void => {
+      const { captainToken, draftToken } = action.payload;
+      const draft = state[draftToken];
+      let cap;
+      if (captainToken === draft.captain1.token) cap = draft.captain1;
+      else if (captainToken === draft.captain2.token) cap = draft.captain2;
+
+      if (!cap) return;
+      cap.ready = true;
+    },
   },
 });
 
-export const { clearState, joinCaptain, joinSpectator, newDraft } = draftSlice.actions;
+export const { clearState, joinCaptain, joinSpectator, newDraft, readyCaptain } = draftSlice.actions;
 
 export default draftSlice.reducer;

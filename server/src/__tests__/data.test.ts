@@ -1,4 +1,4 @@
-import { Civ, Map } from '../models';
+import { Civ, Map } from '@icm/shared/types';
 
 const civs = require('../../data/civilizations').civilizations;
 const maps = require('../../data/maps').maps;

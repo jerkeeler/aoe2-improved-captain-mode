@@ -1,8 +1,8 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { randomEl } from '@icm/shared/random';
 
 import Modal from '../Modal';
-import { randomEl } from '../../random';
 import { setCaptainName } from '../../store/dataSlice';
 import styles from './NameChooser.module.css';
 
