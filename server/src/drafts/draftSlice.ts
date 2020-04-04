@@ -22,10 +22,12 @@ export const draftSlice = createSlice({
       state[action.payload.token] = action.payload;
     },
     joinCaptain: (state, action: PayloadAction<JoinCaptain>): void => {
-      const cap = !state[action.payload.token].captain1.loaded ? 'captain1' : 'captain2';
-      state[action.payload.token][cap].loaded = true;
-      state[action.payload.token][cap].token = action.payload.captainToken;
-      state[action.payload.token][cap].name = action.payload.name;
+      const { captainToken, draftToken, name } = action.payload;
+      const draft = state[draftToken];
+      const cap = !draft.captain1.loaded ? draft.captain1 : draft.captain2;
+      cap.loaded = true;
+      cap.token = captainToken;
+      cap.name = name;
     },
     joinSpectator: (state, action: PayloadAction<JoinSpectator>): void => {
       state[action.payload.token].numSpectators++;

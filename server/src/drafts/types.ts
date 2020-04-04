@@ -28,7 +28,7 @@ export interface Captain {
 }
 
 export interface JoinCaptain {
-  token: string;
+  draftToken: string;
   captainToken: string;
   name: string;
 }

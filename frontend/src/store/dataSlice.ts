@@ -20,6 +20,7 @@ export const slice = createSlice({
   initialState,
   reducers: {
     setCaptainName: (state, action: PayloadAction<string | undefined>) => {
+      state.nameConfirmed = true;
       state.captainName = action.payload;
     },
     setCivs: (state, action: PayloadAction<Civ[]>) => {

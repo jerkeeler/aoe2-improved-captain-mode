@@ -10,6 +10,7 @@ const initialState: DraftState = {
   activeDraftToken: undefined,
   activeDraftConfig: undefined,
   role: undefined,
+  you: undefined,
 };
 
 interface ActiveDraftIno {
@@ -28,8 +29,13 @@ export const slice = createSlice({
       state.activeDraftConfig = action.payload.draftConfig;
       state.availableRoles = action.payload.availableRoles;
     },
+    setRole: (state, action: PayloadAction<{ role: Role }>) => {
+      state.role = action.payload.role;
+    },
   },
 });
+
+export const { setRole } = slice.actions;
 
 export const getDraftInfo = (draftToken: string): AppThunk => async (dispatch) => {
   const { availableRoles, draftConfig } = await draftService.getDraftInfo(draftToken);

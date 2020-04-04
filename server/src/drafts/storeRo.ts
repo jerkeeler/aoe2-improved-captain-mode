@@ -28,8 +28,8 @@ interface DraftInfoResponse {
 export function getDraftConfig(draftToken: string): DraftInfoResponse {
   const { drafts } = store.getState();
   const availableRoles: Role[] = [];
-  if (canJoin(draftToken, Role.SPECTATOR)) availableRoles.push(Role.SPECTATOR);
-  if (canJoin(draftToken, Role.CAPTAIN)) availableRoles.push(Role.CAPTAIN);
+  if (canJoin(draftToken, Role.SPECTATOR).result) availableRoles.push(Role.SPECTATOR);
+  if (canJoin(draftToken, Role.CAPTAIN).result) availableRoles.push(Role.CAPTAIN);
   return {
     draftConfig: drafts[draftToken].draftConfig,
     availableRoles,
