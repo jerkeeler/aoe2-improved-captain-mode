@@ -10,7 +10,7 @@ import { RootState } from '../../store';
 
 interface Props {
   show: boolean;
-  handleClose?: (captainName: string | undefined) => void;
+  handleClose?: () => void;
   hideCancel?: boolean;
 }
 
@@ -31,12 +31,12 @@ const NameChooser = ({ show, handleClose, hideCancel = false }: Props) => {
 
   const close = () => {
     setLocalCaptainName(captainName);
-    handleClose && handleClose(captainName);
+    handleClose && handleClose();
   };
 
   const setName = () => {
     dispatch(setCaptainName(localCaptainName));
-    handleClose && handleClose(localCaptainName);
+    handleClose && handleClose();
   };
 
   return (
