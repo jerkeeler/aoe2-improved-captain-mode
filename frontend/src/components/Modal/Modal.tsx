@@ -5,7 +5,7 @@ import styles from './Modal.module.css';
 
 interface Props {
   show: boolean;
-  handleClose: () => void;
+  handleClose?: () => void;
   children: ReactNode;
 }
 
