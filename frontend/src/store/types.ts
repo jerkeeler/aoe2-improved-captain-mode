@@ -15,4 +15,5 @@ export interface DraftState {
   activeDraftToken?: string;
   activeDraftConfig?: Draft;
   role?: Role;
+  countdown: number;
 }

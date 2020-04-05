@@ -20,7 +20,7 @@ export const typeName = {
 };
 
 export const scopeName = {
-  [ActionScope.GLOBAL]: 'G',
+  [ActionScope.GLOBAL]: '',
   [ActionScope.EXCLUSIVE]: 'E',
   [ActionScope.NONE]: '',
 };

@@ -1,0 +1,31 @@
+.label {
+  margin: 0;
+  padding: 0;
+}
+
+.input {
+  margin: 0;
+  display: inline;
+}
+
+.icon {
+  margin-left: 10px;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
+.copiedContainer {
+  position: relative;
+}
+
+.copied {
+  position: absolute;
+  top: -20px;
+  left: -50%;
+  border-radius: var(--border-radius);
+  background-color: #94c28e;
+  color: #007400;
+  padding: 0 10px;
+}

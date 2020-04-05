@@ -1,0 +1,16 @@
+.cap1 {
+  color: var(--captain1);
+}
+
+.cap2 {
+  color: var(--captain2);
+}
+
+.sectionHeader {
+  font-size: small;
+  margin: 0;
+}
+
+.capName {
+  margin: 0;
+}

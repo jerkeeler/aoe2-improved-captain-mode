@@ -6,8 +6,10 @@
   --admin: #f84dce;
   --pick: #3de911;
   --ban: #e93748;
+  --active: #30aeff;
   --draft-width: 60px;
-  --icon-width: 80px;
+  --icon-width: 70px;
+  --status-height: 60px;
 }
 
 a:hover {

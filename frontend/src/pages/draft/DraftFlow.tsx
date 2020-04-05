@@ -4,7 +4,7 @@ import { Role } from '@icm/shared/types';
 
 import RoleModal from './RoleModal';
 import NameChooser from '../../components/NameChooser';
-import Draft from './Draft';
+import Draft from './Draft/Draft';
 import { RootState } from '../../store';
 
 const DraftFlow = () => {

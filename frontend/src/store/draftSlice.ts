@@ -24,6 +24,7 @@ const initialState: DraftState = {
   activeDraftToken: undefined,
   activeDraftConfig: undefined,
   role: undefined,
+  countdown: -1,
 };
 
 interface ActiveDraftIno {
