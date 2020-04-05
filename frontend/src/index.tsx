@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './css/normalize.css';
 import './css/mvp.css';
 import './css/index.css';
+import './fontAwesomeLibrary';
 import Root from './Root';
 import * as serviceWorker from './serviceWorker';
 

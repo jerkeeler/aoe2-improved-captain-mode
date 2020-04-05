@@ -1,10 +1,12 @@
 import React from 'react';
-import { Captains } from '@icm/shared/types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Action, ActionType, Captains } from '@icm/shared/types';
 
 import styles from './ActionPill.module.css';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 interface Props {
-  captain: number;
+  action: Action;
   isActive: boolean;
 }
 
@@ -19,10 +21,26 @@ const getCapClass = (captain: number) => {
   }
 };
 
-const ActionPill = ({ captain, isActive }: Props) => {
-  const capClass = getCapClass(captain);
+const getFaIcon = (actionType: ActionType): IconProp => {
+  switch (actionType) {
+    case ActionType.PICK:
+      return 'check';
+    case ActionType.BAN:
+      return 'ban';
+    case ActionType.REVEAL:
+      return 'eye';
+  }
+};
+
+const ActionPill = ({ action, isActive }: Props) => {
+  const capClass = getCapClass(action.captain);
   const activeClass = isActive ? styles.active : '';
-  return <span className={`${styles.pill} ${capClass} ${activeClass}`} data-testid="actionPill" />;
+  const faIcon = getFaIcon(action.type);
+  return (
+    <span className={`${styles.pill} ${activeClass}`} data-testid="actionPill">
+      <FontAwesomeIcon icon={faIcon} className={capClass} size="2x" />
+    </span>
+  );
 };
 
 export default ActionPill;
