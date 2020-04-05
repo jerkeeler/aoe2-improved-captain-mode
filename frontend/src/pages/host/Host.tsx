@@ -11,9 +11,9 @@ const Host = () => (
     <Navbar />
     <header>
       <p>Select a preset draft mode from the list below or...</p>
-      <a href="#" className="disabled">
+      <button className="disabled">
         <strong>Customize</strong>
-      </a>
+      </button>
     </header>
     <DraftPresetsList />
     <CivList onCivClick={(civ) => console.log(1111111, civ)} />

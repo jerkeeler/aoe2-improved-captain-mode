@@ -34,7 +34,8 @@ var ActionVisibility;
 var Role;
 (function (Role) {
     Role["SPECTATOR"] = "spectator";
-    Role["CAPTAIN"] = "captain";
+    Role["CAPTAIN_1"] = "captain1";
+    Role["CAPTAIN_2"] = "captain2";
 })(Role = exports.Role || (exports.Role = {}));
 var DraftState;
 (function (DraftState) {

@@ -19,7 +19,10 @@ const Navbar = () => {
           <Link to="/host">Host</Link>
         </li>
         <li>
-          <a onClick={showJoinModal}>Join</a>
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          <a onClick={showJoinModal} role="button">
+            Join
+          </a>
         </li>
       </ul>
     </nav>

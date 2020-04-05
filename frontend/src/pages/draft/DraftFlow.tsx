@@ -17,7 +17,7 @@ const DraftFlow = () => {
 
   if (!roleChosen) return <RoleModal show={!roleChosen} handleClose={() => setRoleChosen(true)} />;
 
-  if (role === Role.CAPTAIN && !nameConfirmed) return <NameChooser show={!nameConfirmed} hideCancel={true} />;
+  if (role !== Role.SPECTATOR && !nameConfirmed) return <NameChooser show={!nameConfirmed} hideCancel={true} />;
 
   return <Draft />;
 };

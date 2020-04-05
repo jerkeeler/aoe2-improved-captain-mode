@@ -5,9 +5,9 @@ import { JoinRoomMessage, SocketEvent } from '@icm/shared/socketTypes';
 import { SocketInfo } from '../socketTypes';
 import { randomToken } from '../random';
 import logger from '../logger';
-import { canJoin, getFrontendDraftInfo, areCaptainsReady, getYouInfo } from './storeRo';
+import { areCaptainsReady, canJoin, getFrontendDraftInfo } from './storeRo';
 
-import { joinSpectator, joinCaptain, readyCaptain } from './actions';
+import { joinCaptain, joinSpectator, leaveSpectator, readyCaptain, leaveCaptain } from './actions';
 
 export function joinRoom({ socket, connInfo, io }: SocketInfo, { draftToken, role, name }: JoinRoomMessage): void {
   const joinResult = canJoin(draftToken, role);
@@ -25,19 +25,19 @@ export function joinRoom({ socket, connInfo, io }: SocketInfo, { draftToken, rol
       connInfo.role = Role.SPECTATOR;
       logger.info(`Spectator joined draft ${draftToken}`);
       break;
-    case Role.CAPTAIN:
+    case Role.CAPTAIN_1:
+    case Role.CAPTAIN_2:
       captainToken = randomToken();
-      joinCaptain(draftToken, captainToken, name);
+      joinCaptain(draftToken, captainToken, name, role);
       connInfo.captainToken = captainToken;
       connInfo.draftToken = draftToken;
-      connInfo.role = Role.CAPTAIN;
+      connInfo.role = role;
       logger.info(`Captain "${name}" (${captainToken}) joined draft ${draftToken}`);
       break;
     default:
       throw new Error('Role not valid for joining room!');
   }
   socket.join(draftToken);
-  socket.emit(SocketEvent.YOU, getYouInfo(draftToken, captainToken));
   io.in(draftToken).emit(SocketEvent.DRAFT_INFO, getFrontendDraftInfo(draftToken));
 
   // TODO: If draft is already in progress re-emit all events
@@ -52,4 +52,13 @@ export function captainReady({ io, connInfo: { captainToken, draftToken } }: Soc
     logger.info(`All captains are ready for draft ${draftToken}! Let the draft begin!`);
     // Begin countdown!
   }
+}
+
+export function leaveDraft({ io, connInfo: { draftToken, role } }: SocketInfo) {
+  // TODO clean up code:
+  // - If active and captain pause the draft and wait for reconnect
+  if (!draftToken) return;
+  if (role === Role.SPECTATOR) leaveSpectator(draftToken);
+  if (role === Role.CAPTAIN_1 || role === Role.CAPTAIN_2) leaveCaptain(draftToken, role);
+  io.in(draftToken).emit(SocketEvent.DRAFT_INFO, getFrontendDraftInfo(draftToken));
 }

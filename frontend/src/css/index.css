@@ -1,9 +1,9 @@
 :root {
   --spacing: 20px;
   --white: #fff;
-  --captain1: #7fc97f;
-  --captain2: #fdc086;
-  --admin: #beaed4;
+  --captain1: #4E9231;
+  --captain2: #D4926A;
+  --admin: #D844B1;
   --draft-width: 60px;
   --icon-width: 80px;
 }
@@ -25,7 +25,8 @@ a.disabled:hover {
 }
 
 button {
-  margin: 0.5rem 0;
+  margin: 1.5rem 0 0.5rem 0;
+  line-height: var(--line-height);
 }
 
 button.outline {

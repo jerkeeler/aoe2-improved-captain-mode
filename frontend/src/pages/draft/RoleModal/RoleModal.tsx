@@ -33,14 +33,17 @@ const RoleModal = ({ handleClose, show }: Props) => {
     handleClose();
   };
 
-  const allowCaptain = availableRoles.includes(Role.CAPTAIN);
+  const allowCaptain1 = availableRoles.includes(Role.CAPTAIN_1);
+  const allowCaptain2 = availableRoles.includes(Role.CAPTAIN_2);
 
   return (
     <Modal show={show}>
       <p>In what capacity would you like to join this draft?</p>
       <div className={styles.buttons}>
-        {allowCaptain && <button onClick={() => chooseRole(Role.CAPTAIN)}>Captain</button>}
-        {!allowCaptain && <span />}
+        {allowCaptain1 && <button onClick={() => chooseRole(Role.CAPTAIN_1)}>Captain 1</button>}
+        {!allowCaptain1 && <span />}
+        {allowCaptain2 && <button onClick={() => chooseRole(Role.CAPTAIN_2)}>Captain 2</button>}
+        {!allowCaptain2 && <span />}
         <button className="outline" onClick={() => chooseRole(Role.SPECTATOR)}>
           Spectator
         </button>

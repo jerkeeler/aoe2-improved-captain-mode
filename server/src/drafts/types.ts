@@ -1,4 +1,4 @@
-import { Action, Draft, DraftState } from '@icm/shared/types';
+import { Action, Draft, DraftState, Role } from '@icm/shared/types';
 
 export interface ActiveAction extends Action {
   value?: number;
@@ -31,6 +31,7 @@ export interface JoinCaptain {
   draftToken: string;
   captainToken: string;
   name: string;
+  role: Role;
 }
 
 export interface JoinSpectator {
