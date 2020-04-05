@@ -22,14 +22,31 @@ const Home = () => {
         <h1>
           Age of Empires II <u>Improved</u> Captain's Mode
         </h1>
-        <p>DE civilizations 👍, maps 🗺, replayable drafts 🔁, and shareable draft configurations! 🤯</p>
+        <p>
+          DE civilizations{' '}
+          <span role="img" aria-label="thumbs up">
+            👍
+          </span>
+          , maps{' '}
+          <span role="img" aria-label="map">
+            🗺
+          </span>
+          , replayable drafts{' '}
+          <span role="img" aria-label="replay icon">
+            🔁
+          </span>
+          , and shareable draft configurations!{' '}
+          <span role="img" aria-label="heading exploding">
+            🤯
+          </span>
+        </p>
         <p>
           <Link to="/host">
             <strong>Host</strong>
           </Link>
-          <a onClick={() => setJoinModal(true)}>
+          <button className="outline" onClick={() => setJoinModal(true)}>
             <em>Join</em>
-          </a>
+          </button>
         </p>
       </header>
       <section>
