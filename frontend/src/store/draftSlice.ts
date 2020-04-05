@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Captains, Draft, DraftInfo, DraftState as ActiveDraftState, Role } from '@icm/shared/types';
+import { Draft, DraftInfo, DraftState as ActiveDraftState, Role } from '@icm/shared/types';
 
 import * as draftService from '../services/drafts';
 import { DraftState } from './types';

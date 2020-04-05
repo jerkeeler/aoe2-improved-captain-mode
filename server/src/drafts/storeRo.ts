@@ -1,4 +1,4 @@
-import { Captains, Draft, DraftState, Role, CaptainInfo, DraftInfo } from '@icm/shared/types';
+import { Draft, DraftState, Role, CaptainInfo, DraftInfo } from '@icm/shared/types';
 
 import store from './store';
 import { CanJoin, Captain } from './types';
