@@ -20,10 +20,7 @@ io.on(SocketEvent.CONNECTION, (socket: Socket) => {
   socket.on(SocketEvent.READY, () => draftLogic.captainReady(socketInfo));
 
   socket.on(SocketEvent.DISCONNECT, function () {
-    // TODO clean up code:
-    // - If active and captain pause the draft and wait for reconnect
-    // - If spectator decrement spec count and emit draft info
-    console.log(1111111, connInfo);
+    draftLogic.leaveDraft(socketInfo);
     console.log('user disconnected');
   });
 });

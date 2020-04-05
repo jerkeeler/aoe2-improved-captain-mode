@@ -1,41 +1,22 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import openSocket from 'socket.io-client';
-import { Role } from '@icm/shared/types';
-import { JoinRoomMessage } from '@icm/shared/socketTypes';
+import React from 'react';
 
-import { RootState } from '../../store';
+import useDraftSocket from '../../hooks/useDraftSocket';
+import useDraftState from '../../hooks/useDraftState';
 import Layout from '../../components/Layout';
+import DraftMinimap from '../../components/DraftMinimap';
+import DraftTitle from './DraftTitle';
+import ReadyButton from './ReadyButton';
 
 const Draft = () => {
-  const { name, draftToken, role } = useSelector(
-    ({ data: { captainName }, drafts: { activeDraftToken, role } }: RootState) => ({
-      name: captainName as string,
-      draftToken: activeDraftToken as string,
-      role: role as Role,
-    }),
-  );
-
-  useEffect(() => {
-    const socket = openSocket();
-    const message: JoinRoomMessage = {
-      draftToken,
-      name,
-      role,
-    };
-    socket.emit('join', message);
-    return () => {
-      socket.disconnect();
-    };
-  }, [draftToken, name, role]);
+  useDraftSocket();
+  const { draftInfo, draftConfig } = useDraftState();
 
   return (
     <Layout>
-      <h1>New Draft ({draftToken})</h1>
-      <p>
-        You are a: <strong>{role}</strong>
-      </p>
-      {role === Role.CAPTAIN && <p>Your name is: {name}</p>}
+      <DraftTitle />
+      <p>There are {draftInfo.numSpectators} spectators</p>
+      <ReadyButton />
+      <DraftMinimap draftConfig={draftConfig} activeIndex={draftInfo.currentActionIdx} />
     </Layout>
   );
 };

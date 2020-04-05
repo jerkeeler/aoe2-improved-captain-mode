@@ -49,7 +49,8 @@ export declare enum ActionVisibility {
 }
 export declare enum Role {
     SPECTATOR = "spectator",
-    CAPTAIN = "captain"
+    CAPTAIN_1 = "captain1",
+    CAPTAIN_2 = "captain2"
 }
 export declare enum DraftState {
     WAITING = 0,
@@ -68,5 +69,4 @@ export interface DraftInfo {
     currentActionIdx: number;
     captain1: CaptainInfo;
     captain2: CaptainInfo;
-    you?: Captains;
 }

@@ -17,13 +17,13 @@ describe('draft store RO API', () => {
   });
 
   test('can join true', () => {
-    expect(canJoin(draftToken, Role.CAPTAIN).result).toBe(true);
+    expect(canJoin(draftToken, Role.CAPTAIN_1).result).toBe(true);
   });
 
   test('can join false', () => {
-    joinCaptain(draftToken, 'A', 'C1');
-    joinCaptain(draftToken, 'B', 'C2');
-    expect(canJoin(draftToken, Role.CAPTAIN).result).toBe(false);
+    joinCaptain(draftToken, 'A', 'C1', Role.CAPTAIN_1);
+    joinCaptain(draftToken, 'B', 'C2', Role.CAPTAIN_2);
+    expect(canJoin(draftToken, Role.CAPTAIN_1).result).toBe(false);
   });
 
   test('draft exists true', () => {

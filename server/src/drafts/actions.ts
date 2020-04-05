@@ -1,21 +1,15 @@
-import { Draft } from '@icm/shared/types';
+import { Draft, Role } from '@icm/shared/types';
 
 import { IS_PROD } from '../consts';
 import { SameTokenError } from '../xceptions';
 import store, { dispatch } from './store';
 import { createActiveDraft } from './factory';
 import { randomToken } from '../random';
-import {
-  clearState,
-  newDraft,
-  joinSpectator as joinSpectatorAction,
-  joinCaptain as joinCaptainAction,
-  readyCaptain as readyCaptainAction,
-} from './draftSlice';
+import * as actions from './draftSlice';
 
 // ACTION CREATORS
 export const safeClearState = (): void => {
-  if (!IS_PROD) dispatch(clearState());
+  if (!IS_PROD) dispatch(actions.clearState());
 };
 
 export const createNewDraft = (draftConfig: Draft): string => {
@@ -24,29 +18,38 @@ export const createNewDraft = (draftConfig: Draft): string => {
   if (token in drafts) throw new SameTokenError(token);
 
   const draft = createActiveDraft(token, draftConfig);
-  dispatch(newDraft(draft));
+  dispatch(actions.newDraft(draft));
   return token;
 };
 
 export const joinSpectator = (token: string): void => {
-  dispatch(joinSpectatorAction({ token }));
+  dispatch(actions.joinSpectator({ token }));
 };
 
-export const joinCaptain = (draftToken: string, captainToken: string, name: string): void => {
+export const joinCaptain = (draftToken: string, captainToken: string, name: string, role: Role): void => {
   dispatch(
-    joinCaptainAction({
+    actions.joinCaptain({
       draftToken,
       captainToken,
       name,
+      role,
     }),
   );
 };
 
 export const readyCaptain = (draftToken: string, captainToken: string): void => {
   dispatch(
-    readyCaptainAction({
+    actions.readyCaptain({
       draftToken,
       captainToken,
     }),
   );
+};
+
+export const leaveSpectator = (draftToken: string): void => {
+  dispatch(actions.leaveSpectator({ draftToken }));
+};
+
+export const leaveCaptain = (draftToken: string, role: Role): void => {
+  dispatch(actions.leaveCaptain({ draftToken, role }));
 };

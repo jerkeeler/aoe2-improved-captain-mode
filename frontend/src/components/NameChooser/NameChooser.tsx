@@ -35,7 +35,7 @@ const NameChooser = ({ show, handleClose, hideCancel = false }: Props) => {
   };
 
   const setName = () => {
-    dispatch(setCaptainName(localCaptainName));
+    if (localCaptainName !== '') dispatch(setCaptainName(localCaptainName));
     handleClose && handleClose();
   };
 
@@ -43,7 +43,7 @@ const NameChooser = ({ show, handleClose, hideCancel = false }: Props) => {
     <Modal show={show} handleClose={close}>
       <p>What would you like your captain name to be?</p>
       <div className={styles.form}>
-        <input value={localCaptainName} onChange={onChange} placeholder="Boulder" />
+        <input value={localCaptainName} onChange={onChange} placeholder="Boulder" maxLength={20} />
         <span className={styles.icon} onClick={randomName}>
           🔄
         </span>
