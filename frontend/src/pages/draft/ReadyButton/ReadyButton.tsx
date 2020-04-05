@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Role } from '@icm/shared/types';
+import { SocketEvent } from '@icm/shared/socketTypes';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { getSocket } from '../../../socket';
 import useDraftState from '../../../hooks/useDraftState';
 
 import styles from './ReadyButton.module.css';
-import { SocketEvent } from '@icm/shared/socketTypes';
 
 const ReadyButton = () => {
   const [sentReady, setSentReady] = useState(false);
@@ -21,7 +22,9 @@ const ReadyButton = () => {
     socket.emit(SocketEvent.READY);
   };
   const el = captain.ready ? (
-    <p>You are ready! Waiting on other captain to ready up...</p>
+    <p>
+      You are ready! Waiting on other captain to ready up... <FontAwesomeIcon icon="spinner" spin />
+    </p>
   ) : (
     <button onClick={onClick}>Ready</button>
   );

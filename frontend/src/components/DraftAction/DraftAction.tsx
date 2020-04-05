@@ -1,7 +1,7 @@
 import React from 'react';
-import { Action } from '@icm/shared/types';
+import { Action, ActionType } from '@icm/shared/types';
 
-import { getActionName } from '../../copy';
+import { objectName, scopeName } from '../../copy';
 import ActionPill from '../ActionPill';
 import styles from './DraftAction.module.css';
 
@@ -10,11 +10,21 @@ interface Props {
   isActive: boolean;
 }
 
+const RevealCopy = ({ action }: { action: Action }) => <>{objectName[action.object]}</>;
+
+const ActionCopy = ({ action }: { action: Action }) => (
+  <>
+    <strong>{scopeName[action.scope]}</strong>
+    {objectName[action.object]}
+  </>
+);
+
 const DraftAction = ({ action, isActive }: Props) => {
   return (
     <li className={`${styles.action}`}>
-      <ActionPill captain={action.captain} isActive={isActive} />
-      {getActionName(action)}
+      <ActionPill action={action} isActive={isActive} />
+      {action.type === ActionType.REVEAL && <RevealCopy action={action} />}
+      {action.type !== ActionType.REVEAL && <ActionCopy action={action} />}
     </li>
   );
 };

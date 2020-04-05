@@ -1,4 +1,4 @@
-import { Captains, ActionObject, ActionType, ActionScope, ActionVisibility, Action } from '@icm/shared/types';
+import { Captains, ActionObject, ActionType, ActionScope, ActionVisibility } from '@icm/shared/types';
 
 export const captainName = {
   [Captains.CAP_1]: 'Cap 1',
@@ -29,20 +29,3 @@ export const visibilityName = {
   [ActionVisibility.VISIBLE]: 'V',
   [ActionVisibility.HIDDEN]: 'H',
 };
-
-function getRevealName(action: Action) {
-  return `${typeName[action.type]} ${objectName[action.object]}`;
-}
-
-function getCapActionName(action: Action) {
-  return `${objectName[action.object]} ${scopeName[action.scope]}${typeName[action.type]}`;
-  // `${scopeName[action.scope]}${typeName[action.type]} ` +
-  // `${visibilityName[action.visibility]}`;
-}
-
-export function getActionName(action: Action) {
-  if (action.type === ActionType.REVEAL) {
-    return getRevealName(action);
-  }
-  return getCapActionName(action);
-}

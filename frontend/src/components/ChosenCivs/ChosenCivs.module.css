@@ -1,0 +1,43 @@
+.wrapper {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, calc(var(--icon-width) + 20px));
+  list-style: none;
+  padding: 10px 10px;
+}
+
+.picked {
+  background-color: rgba(61, 233, 17, 0.3);
+}
+
+.banned {
+  background-color: rgba(233, 55, 72, 0.3);
+}
+
+.choice {
+  text-align: center;
+  padding: 5px;
+}
+
+.choice:first-child {
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+}
+
+.choice:last-child {
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}
+
+.image {
+  width: var(--icon-width);
+  border-radius: var(--border-radius);
+}
+
+.emptyFrame {
+  border: 2px solid gray;
+  border-radius: var(--border-radius);
+  width: var(--icon-width);
+  height: var(--icon-width);
+}
+

@@ -1,17 +1,15 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Civ } from '@icm/shared/types';
 
-import { RootState } from '../../store';
 import CivIcon from '../CivIcon';
 import styles from './CivList.module.css';
 
 interface Props {
+  civs: Civ[];
   onCivClick: (civ: Civ) => void;
 }
 
-const CivList = ({ onCivClick }: Props) => {
-  const civs = useSelector(({ data }: RootState) => data.civs);
+const CivList = ({ civs, onCivClick }: Props) => {
   return (
     <ul className={styles.civList}>
       {civs.map((c) => (
