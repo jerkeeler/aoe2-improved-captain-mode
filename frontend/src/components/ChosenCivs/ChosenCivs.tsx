@@ -11,13 +11,15 @@ interface Props {
 
 const ChosenCiv = ({ civ, choice }: { civ: Civ; choice: 'banned' | 'picked' }) => (
   <li className={`${styles.choice} ${styles[choice]}`}>
-    <img src={`/static/img/units/${civ.uniqueUnit}.jpg`} alt={civ.uniqueUnit} className={styles.image} /> {civ.name}
+    <img src={`/static/img/units/${civ.uniqueUnit}.jpg`} alt={civ.uniqueUnit} className={styles.image} />
+    <p>{civ.name}</p>
   </li>
 );
 
 const EmptyFrame = ({ choice }: { choice: 'banned' | 'picked' }) => (
   <li className={`${styles.choice} ${styles[choice]}`}>
     <div className={styles.emptyFrame} />
+    <p>&nbsp;</p>
   </li>
 );
 

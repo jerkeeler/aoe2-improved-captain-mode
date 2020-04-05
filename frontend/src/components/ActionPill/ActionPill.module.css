@@ -18,7 +18,7 @@
 }
 
 .active {
-  box-shadow: var(--box-shadow) var(--color);
+  /*box-shadow: var(--box-shadow) var(--color);*/
   animation: pulse 1s;
   animation-direction: alternate;
   animation-iteration-count: infinite;
@@ -27,9 +27,9 @@
 
 @keyframes pulse {
   from {
-    transform: scaleY(1);
+    transform: scale(1);
   }
   to {
-    transform: scaleY(1.8);
+    transform: scale(1.1);
   }
 }

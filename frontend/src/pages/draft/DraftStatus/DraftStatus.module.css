@@ -1,0 +1,5 @@
+.status {
+  min-height: var(--status-height);
+  display: grid;
+  justify-content: center;
+}

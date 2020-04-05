@@ -3,7 +3,8 @@
   justify-content: center;
   grid-template-columns: repeat(auto-fit, calc(var(--icon-width) + 20px));
   list-style: none;
-  padding: 10px 10px;
+  padding: 0;
+  margin: 0 0 10px 0;
 }
 
 .picked {
@@ -29,6 +30,11 @@
   border-bottom-right-radius: var(--border-radius);
 }
 
+.choice > p {
+  margin: 0;
+  font-size: small;
+}
+
 .image {
   width: var(--icon-width);
   border-radius: var(--border-radius);
@@ -37,7 +43,8 @@
 .emptyFrame {
   border: 2px solid gray;
   border-radius: var(--border-radius);
-  width: var(--icon-width);
-  height: var(--icon-width);
+  width: calc(var(--icon-width) - 2px);
+  height: calc(var(--icon-width) - 2px);
+  margin: 0 auto;
 }
 

@@ -1,0 +1,11 @@
+.countdown {
+  margin-left: 10px;
+  position: relative;
+  top: 2px;
+}
+
+.number {
+  color: red;
+  font-weight: 700;
+  font-size: xx-large;
+}

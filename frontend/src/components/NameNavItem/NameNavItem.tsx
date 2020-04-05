@@ -15,6 +15,7 @@ const NameNavItem = () => {
     <>
       <NameChooser show={modal} handleClose={hideModal} />
       <li className={styles.label} onClick={showModal}>
+        <span className={styles.you}>You are: </span>
         {captainName} ✏️
       </li>
     </>

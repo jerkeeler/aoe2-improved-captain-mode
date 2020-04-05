@@ -20,8 +20,9 @@ const ActionCopy = ({ action }: { action: Action }) => (
 );
 
 const DraftAction = ({ action, isActive }: Props) => {
+  const isActiveClass = isActive ? styles.isActive : '';
   return (
-    <li className={`${styles.action}`}>
+    <li className={`${styles.action} ${isActiveClass}`}>
       <ActionPill action={action} isActive={isActive} />
       {action.type === ActionType.REVEAL && <RevealCopy action={action} />}
       {action.type !== ActionType.REVEAL && <ActionCopy action={action} />}

@@ -1,4 +1,3 @@
-.ready {
-  display: grid;
-  justify-content: center;
+.ready > button {
+  margin: 0;
 }
