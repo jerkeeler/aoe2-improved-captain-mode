@@ -66,3 +66,15 @@ export function getFrontendDraftInfo(draftToken: string): DraftInfo {
     captain2: getFrontendCaptainInfo(draft.captain2),
   };
 }
+
+export function doActionsRemain(draftToken: string): boolean {
+  const { drafts } = store.getState();
+  const draft = drafts[draftToken];
+  return draft.currentActionIdx < draft.draftConfig.actions.length - 1;
+}
+
+export function getDraftState(draftToken: string): DraftState {
+  const { drafts } = store.getState();
+  const draft = drafts[draftToken];
+  return draft.state;
+}

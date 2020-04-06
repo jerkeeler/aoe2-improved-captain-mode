@@ -1,5 +1,5 @@
 import React from 'react';
-import { Role } from '@icm/shared/types';
+import { DraftState, Role } from '@icm/shared/types';
 
 import useDraftSocket from '../../../hooks/useDraftSocket';
 import useDraftState from '../../../hooks/useDraftState';
@@ -12,11 +12,12 @@ import styles from './Draft.module.css';
 const Draft = () => {
   useDraftSocket();
   const { draftInfo, draftConfig } = useDraftState();
+  const activeIdx = draftInfo.state === DraftState.FINISHED ? -1 : draftInfo.currentActionIdx;
 
   return (
     <main className={styles.main}>
       <DraftLink />
-      <DraftMinimap draftConfig={draftConfig} activeIndex={draftInfo.currentActionIdx} />
+      <DraftMinimap draftConfig={draftConfig} activeIndex={activeIdx} />
       <DraftStatus />
       <div className={styles.captainInfo}>
         <CaptainPicks role={Role.CAPTAIN_1} />

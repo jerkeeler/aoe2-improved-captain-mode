@@ -49,10 +49,13 @@ export const slice = createSlice({
     setDraftInfo: (state, action: PayloadAction<{ draftInfo: DraftInfo }>) => {
       state.draftInfo = action.payload.draftInfo;
     },
+    setCountdown: (state, action: PayloadAction<{ countdown: number }>) => {
+      state.countdown = action.payload.countdown;
+    },
   },
 });
 
-export const { setRole, setDraftInfo } = slice.actions;
+export const { setRole, setDraftInfo, setCountdown } = slice.actions;
 
 export const getDraftInfo = (draftToken: string): AppThunk => async (dispatch) => {
   const { availableRoles, draftConfig } = await draftService.getDraftInfo(draftToken);

@@ -19,12 +19,14 @@ const CaptainStatus = () => {
         Waiting on other captain to ready up... <FontAwesomeIcon icon="spinner" spin />
       </p>
     );
+
   if (currentActionIdx === -1)
     return (
       <p>
         Both captains are ready! The draft is about to start! <Countdown />
       </p>
     );
+
   return (
     <p>
       Captain copy.... <Countdown />

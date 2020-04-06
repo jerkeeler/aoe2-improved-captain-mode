@@ -1,13 +1,16 @@
 import React, { useRef, useState } from 'react';
-import { useParams } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useDraftState from '../../../hooks/useDraftState';
 
 import styles from './DraftLink.module.css';
 
 const DraftLink = () => {
   const [copied, setCopied] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>();
-  const { draftToken } = useParams();
+  const {
+    draftToken,
+    draftInfo: { numSpectators },
+  } = useDraftState();
 
   const onCopyClick = () => {
     if (!inputRef.current) return;
@@ -18,19 +21,27 @@ const DraftLink = () => {
   };
 
   return (
-    <header className={styles.label}>
-      Send this link to others to join this draft: {draftToken}{' '}
-      <span className={styles.copiedContainer}>
-        {copied && <span className={styles.copied}>Copied!</span>}
-        <FontAwesomeIcon className={styles.icon} icon="copy" onClick={onCopyClick} />{' '}
+    <div className={styles.wrapper}>
+      <span />
+      <header className={styles.label}>
+        Send this link to others to join this draft: {draftToken}{' '}
+        <span className={styles.copiedContainer}>
+          {copied && <span className={styles.copied}>Copied!</span>}
+          <FontAwesomeIcon className={styles.icon} icon="copy" onClick={onCopyClick} />{' '}
+        </span>
+        <input
+          className={styles.input}
+          value={window.location.href}
+          readOnly
+          ref={(inputBox) => (inputRef.current = inputBox)}
+          onClick={onCopyClick}
+        />
+      </header>
+      <span className={styles.spectators}>
+        <span className={styles.specNumbers}>{numSpectators}</span>
+        <FontAwesomeIcon icon="eye" />
       </span>
-      <input
-        className={styles.input}
-        value={window.location.href}
-        readOnly
-        ref={(inputBox) => (inputRef.current = inputBox)}
-      />
-    </header>
+    </div>
   );
 };
 

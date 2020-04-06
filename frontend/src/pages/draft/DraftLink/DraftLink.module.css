@@ -29,3 +29,16 @@
   color: #007400;
   padding: 0 10px;
 }
+
+.spectators {
+  float: right;
+}
+
+.specNumbers {
+  margin-right: 5px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 60px 1fr 60px;
+}

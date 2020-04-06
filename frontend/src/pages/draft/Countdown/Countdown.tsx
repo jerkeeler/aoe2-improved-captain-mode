@@ -13,7 +13,7 @@ const Countdown = () => {
 
   return (
     <span className={styles.countdown}>
-      <span className={styles.number}>{countdown}</span>...
+      <span className={styles.number}>{Math.round(countdown)}</span>...
     </span>
   );
 };

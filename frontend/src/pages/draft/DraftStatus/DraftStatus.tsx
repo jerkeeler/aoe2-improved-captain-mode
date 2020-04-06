@@ -1,5 +1,5 @@
 import React from 'react';
-import { Role } from '@icm/shared/types';
+import { DraftState, Role } from '@icm/shared/types';
 
 import useDraftState from '../../../hooks/useDraftState';
 import CaptainStatus from '../CaptainStatus';
@@ -8,19 +8,18 @@ import SpectatorStatus from '../SpectatorStatus';
 import styles from './DraftStatus.module.css';
 
 const DraftStatus = () => {
-  const { role } = useDraftState();
-  if (role === Role.SPECTATOR)
-    return (
-      <div className={styles.status}>
-        <SpectatorStatus />
-      </div>
-    );
+  const {
+    role,
+    draftInfo: { state, captain1, captain2 },
+  } = useDraftState();
 
-  return (
-    <div className={styles.status}>
-      <CaptainStatus />
-    </div>
-  );
+  let el = <CaptainStatus />;
+  if (role === Role.SPECTATOR) el = <SpectatorStatus />;
+  if (state === DraftState.IN_PROGRESS && !captain1.ready && !captain2.ready)
+    el = <p>Other captain disconnected! Draft aborted!</p>;
+  if (state === DraftState.FINISHED) el = <p>Draft has finished! Thanks for using AoE2 Improved Captain's Mode!</p>;
+
+  return <div className={styles.status}>{el}</div>;
 };
 
 export default DraftStatus;

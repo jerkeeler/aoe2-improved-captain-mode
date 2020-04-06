@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { ActiveDraft, JoinCaptain, JoinSpectator } from './types';
-import { Role } from '@icm/shared/types';
+import { Role, DraftState as ActiveDraftState } from '@icm/shared/types';
 
 interface DraftState {
   [key: string]: ActiveDraft;
@@ -36,7 +36,8 @@ export const draftSlice = createSlice({
       const cap = role === Role.CAPTAIN_1 ? draft.captain1 : draft.captain2;
       cap.loaded = false;
       cap.token = undefined;
-      cap.ready = false;
+      draft.captain1.ready = false;
+      draft.captain2.ready = false;
     },
     joinSpectator: (state, action: PayloadAction<JoinSpectator>): void => {
       state[action.payload.token].numSpectators++;
@@ -54,6 +55,14 @@ export const draftSlice = createSlice({
       if (!cap) return;
       cap.ready = true;
     },
+    setDraftState: (state, action: PayloadAction<{ draftToken: string; draftState: ActiveDraftState }>): void => {
+      const { draftToken, draftState } = action.payload;
+      state[draftToken].state = draftState;
+    },
+    incrementActionIdx: (state, action: PayloadAction<{ draftToken: string }>): void => {
+      const { draftToken } = action.payload;
+      state[draftToken].currentActionIdx++;
+    },
   },
 });
 
@@ -65,6 +74,8 @@ export const {
   readyCaptain,
   leaveSpectator,
   leaveCaptain,
+  incrementActionIdx,
+  setDraftState,
 } = draftSlice.actions;
 
 export default draftSlice.reducer;
