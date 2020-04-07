@@ -9,7 +9,8 @@ export function canJoin(token: string, role: Role): CanJoin {
   if (!state[token]) return { result: false, reason: 'Draft does not exist!' };
 
   const draft = state[token];
-  draft.state;
+
+  // TODO: Allow rejoining mid-draft
   if (!(draft.state === DraftState.WAITING)) return { result: false, reason: 'Cannot join an ongoing draft!' };
   if (role === Role.SPECTATOR) return { result: true };
   if (role === Role.CAPTAIN_1 && !draft.captain1.loaded) return { result: true };
