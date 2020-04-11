@@ -35,7 +35,7 @@ describe('draft factory', () => {
       },
       timer: -1,
       timerId: undefined,
-      actionsTaken: [],
+      serverEvents: [],
       startTime: 1487076708000,
     };
 
