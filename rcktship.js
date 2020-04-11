@@ -69,8 +69,11 @@ async function deployFrontend(tag) {
   await rckt.local(`git checkout ${tag}`);
 
   await rckt.with('cd ./frontend', async () => {
+    console.log(chalk.magentaBright('Building react production build...'));
     await rckt.local('npm run build');
     await rckt.local(`tar czf ${tarBall} build/`);
+
+    console.log(chalk.magentaBright('Copying tarball and unpacking...'));
     await rckt.local(`scp ${tarBall} ${REMOTE_HOST}:${REMOTE_APP_PATH}`);
     await rckt.local(`rm ${tarBall}`);
   });
@@ -79,6 +82,8 @@ async function deployFrontend(tag) {
     await rckt.remote(`tar -xf ${tarBall}`);
     await rckt.remote(`rm ${tarBall}`);
   });
+
+  console.log(chalk.magentaBright(`FRONTEND DEPLOY OF ${tag} FINISHED!`));
 }
 
 function nvmCommand(cmd) {
