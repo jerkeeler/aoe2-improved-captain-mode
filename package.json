@@ -3,7 +3,7 @@
   "name": "aoe2-improved-captains-mode",
   "version": "1.0.0",
   "scripts": {
-    "lint": "npx concurrently --names \"FRONTEND,SERVER,SHARED\" -c \"bgCyan.bold,bgGreen.bold,bgMagenta.bold\" \"cd frontend && npm run lint\" \"cd server && npm run lint\" \"cd shared && npm run lint\"" 
+    "lint": "npx concurrently --names \"FRONTEND,SERVER,SHARED\" -c \"bgCyan.bold,bgGreen.bold,bgMagenta.bold\" \"cd frontend && npm run lint\" \"cd server && npm run lint\" \"cd shared && npm run lint\""
   },
   "repository": {
     "type": "git",
@@ -16,8 +16,12 @@
   },
   "homepage": "https://github.com/jerkeeler/aoe2-improved-captain-mode#readme",
   "devDependencies": {
+    "chalk": "^4.0.0",
     "concurrently": "^5.1.0",
-    "husky": "^4.2.3"
+    "dotenv": "^8.2.0",
+    "husky": "^4.2.3",
+    "inquirer": "^7.1.0",
+    "rcktship": "^1.0.6"
   },
   "husky": {
     "hooks": {
