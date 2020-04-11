@@ -35,7 +35,7 @@ const NameChooser = ({ show, handleClose, hideCancel = false }: Props) => {
   };
 
   const setName = () => {
-    if (localCaptainName !== '') dispatch(setCaptainName(localCaptainName));
+    if (localCaptainName !== '' && localCaptainName) dispatch(setCaptainName(localCaptainName));
     handleClose && handleClose();
   };
 

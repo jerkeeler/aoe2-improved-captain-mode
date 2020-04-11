@@ -1,8 +1,4 @@
-import { Action, Draft, DraftState, Role } from '@icm/shared/types';
-
-export interface ActiveAction extends Action {
-  value?: number;
-}
+import { Draft, DraftState, Role, ServerDraftEvent } from '@icm/shared/types';
 
 export interface ActiveDraft {
   state: DraftState;
@@ -14,7 +10,7 @@ export interface ActiveDraft {
   captain2: Captain;
   timer: number;
   timerId?: number;
-  actionsTaken: ActiveAction[];
+  serverEvents: ServerDraftEvent[];
   startTime: number;
 }
 

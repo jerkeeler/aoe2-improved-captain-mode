@@ -8,6 +8,9 @@ export enum SocketEvent {
   READY = 'ready',
   YOU = 'you',
   DRAFT_INFO = 'draftInfo',
+  COUNTDOWN = 'countdown',
+  CLIENT_DRAFT_EVENT = 'clientDraftEvent',
+  SERVER_DRAFT_EVENT = 'serverDraftEvent',
 }
 
 export interface JoinRoomMessage {

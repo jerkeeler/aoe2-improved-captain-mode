@@ -11,6 +11,14 @@
   box-shadow: var(--box-shadow) var(--color-text-secondary);
 }
 
+.civIcon.chosen:hover {
+  cursor: not-allowed;
+}
+
+.civIcon.chosen:hover > .imageWrapper >.civImage {
+  box-shadow: none;
+}
+
 .civName {
   margin: 0;
 }

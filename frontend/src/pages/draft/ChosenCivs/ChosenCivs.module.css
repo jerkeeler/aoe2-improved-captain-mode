@@ -37,14 +37,16 @@
 
 .image {
   width: var(--icon-width);
+  height: var(--icon-width);
   border-radius: var(--border-radius);
 }
 
 .emptyFrame {
   border: 2px solid gray;
   border-radius: var(--border-radius);
-  width: calc(var(--icon-width) - 2px);
-  height: calc(var(--icon-width) - 2px);
+  width: calc(var(--icon-width) - 4px);
+  height: calc(var(--icon-width) - 4px);
   margin: 0 auto;
+  display: inline-block;
 }
 

@@ -26,7 +26,7 @@ export function createActiveDraft(token: string, draftConfig: Draft): ActiveDraf
     captain2: createCaptain(),
     timer: -1,
     timerId: undefined,
-    actionsTaken: [],
+    serverEvents: [],
     startTime: utc().valueOf(),
   };
 }

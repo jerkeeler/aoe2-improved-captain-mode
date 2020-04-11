@@ -23,15 +23,23 @@ const Picked = () => (
   </span>
 );
 
-const CivIcon = ({ civ, onClick, banned = false, picked = false }: Props) => (
-  <li className={styles.civIcon} onClick={() => onClick && onClick(civ)}>
-    <div className={styles.imageWrapper}>
-      <img className={styles.civImage} src={`/static/img/units/${civ.uniqueUnit}.jpg`} alt={civ.uniqueUnit} />
-      {banned && <Banned />}
-      {picked && <Picked />}
-    </div>
-    <p className={styles.civName}>{civ.name}</p>
-  </li>
-);
+const CivIcon = ({ civ, onClick, banned = false, picked = false }: Props) => {
+  const click = () => {
+    if (banned || picked || !onClick) return;
+    onClick(civ);
+  };
+  const chosenClass = banned || picked ? styles.chosen : '';
+
+  return (
+    <li className={`${styles.civIcon} ${chosenClass}`} onClick={click}>
+      <div className={styles.imageWrapper}>
+        <img className={styles.civImage} src={`/static/img/units/${civ.uniqueUnit}.jpg`} alt={civ.uniqueUnit} />
+        {banned && <Banned />}
+        {picked && <Picked />}
+      </div>
+      <p className={styles.civName}>{civ.name}</p>
+    </li>
+  );
+};
 
 export default CivIcon;

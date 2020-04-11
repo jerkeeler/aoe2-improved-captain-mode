@@ -61,6 +61,7 @@ export interface CaptainInfo {
     name?: string;
     loaded: boolean;
     ready: boolean;
+    captain: Captains;
 }
 export interface DraftInfo {
     state: DraftState;
@@ -69,4 +70,13 @@ export interface DraftInfo {
     currentActionIdx: number;
     captain1: CaptainInfo;
     captain2: CaptainInfo;
+}
+export interface ServerDraftEvent extends Action {
+    civBans: number[];
+    civPicks: number[];
+    mapBans: number[];
+    mapPicks: number[];
+}
+export interface ClientDraftEvent extends Action {
+    value: number;
 }
