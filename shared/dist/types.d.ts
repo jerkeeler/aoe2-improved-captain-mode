@@ -61,6 +61,7 @@ export interface CaptainInfo {
     name?: string;
     loaded: boolean;
     ready: boolean;
+    captain: Captains;
 }
 export interface DraftInfo {
     state: DraftState;

@@ -8,10 +8,11 @@ import CaptainPicks from '../CaptainPicks';
 import DraftStatus from '../DraftStatus';
 import DraftLink from '../DraftLink';
 import styles from './Draft.module.css';
+import CivPicker from '../CivPicker';
 
 const Draft = () => {
   useDraftSocket();
-  const { draftInfo, draftConfig } = useDraftState();
+  const { draftInfo, draftConfig, role } = useDraftState();
   const activeIdx = draftInfo.state === DraftState.FINISHED ? -1 : draftInfo.currentActionIdx;
 
   return (
@@ -23,6 +24,7 @@ const Draft = () => {
         <CaptainPicks role={Role.CAPTAIN_1} />
         <CaptainPicks role={Role.CAPTAIN_2} />
       </div>
+      {role !== Role.SPECTATOR && <CivPicker />}
     </main>
   );
 };

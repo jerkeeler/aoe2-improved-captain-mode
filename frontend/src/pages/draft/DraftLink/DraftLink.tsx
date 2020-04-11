@@ -8,7 +8,6 @@ const DraftLink = () => {
   const [copied, setCopied] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>();
   const {
-    draftToken,
     draftInfo: { numSpectators },
   } = useDraftState();
 
@@ -24,7 +23,7 @@ const DraftLink = () => {
     <div className={styles.wrapper}>
       <span />
       <header className={styles.label}>
-        Send this link to others to join this draft: {draftToken}{' '}
+        Send this link to others to join this draft:
         <span className={styles.copiedContainer}>
           {copied && <span className={styles.copied}>Copied!</span>}
           <FontAwesomeIcon className={styles.icon} icon="copy" onClick={onCopyClick} />{' '}

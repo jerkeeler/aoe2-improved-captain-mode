@@ -36,6 +36,7 @@ export const draftSlice = createSlice({
       const cap = role === Role.CAPTAIN_1 ? draft.captain1 : draft.captain2;
       cap.loaded = false;
       cap.token = undefined;
+      cap.name = undefined;
       draft.captain1.ready = false;
       draft.captain2.ready = false;
     },

@@ -24,7 +24,7 @@ io.on(SocketEvent.CONNECTION, (socket: Socket) => {
 
   socket.on(SocketEvent.DISCONNECT, function () {
     draftLogic.leaveDraft(socketInfo);
-    console.log('user disconnected');
+    logger.debug('user disconnected!');
   });
 });
 

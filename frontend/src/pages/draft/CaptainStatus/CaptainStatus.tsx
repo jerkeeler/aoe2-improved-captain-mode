@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { getCaptainCopy } from '../../../copy';
 import useActiveCaptain from '../../../hooks/useActiveCaptain';
 import ReadyButton from '../ReadyButton';
 import useDraftState from '../../../hooks/useDraftState';
@@ -9,6 +10,7 @@ import Countdown from '../Countdown';
 const CaptainStatus = () => {
   const {
     draftInfo: { captain1, captain2, currentActionIdx },
+    draftConfig: { actions },
   } = useDraftState();
   const captain = useActiveCaptain();
 
@@ -27,9 +29,10 @@ const CaptainStatus = () => {
       </p>
     );
 
+  const currentAction = actions[currentActionIdx];
   return (
     <p>
-      Captain copy.... <Countdown />
+      {getCaptainCopy(currentAction, captain.captain)} <Countdown />
     </p>
   );
 };

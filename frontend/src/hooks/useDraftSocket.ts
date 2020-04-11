@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { DraftInfo, Role } from '@icm/shared/types';
+import { DraftInfo, Role, ServerDraftEvent } from '@icm/shared/types';
 import { JoinRoomMessage, SocketEvent } from '@icm/shared/socketTypes';
 
-import { setDraftInfo, setCountdown } from '../store/draftSlice';
+import { setDraftInfo, setCountdown, processServerEvent } from '../store/draftSlice';
 import { RootState } from '../store';
 import { getSocket, disconnectSocket } from '../socket';
 
@@ -24,6 +24,9 @@ const useDraftSocket = () => {
     socket.on(SocketEvent.COUNTDOWN, (countdown: number) => {
       dispatch(setCountdown({ countdown }));
     });
+    socket.on(SocketEvent.SERVER_DRAFT_EVENT, (serverEvent: ServerDraftEvent) =>
+      dispatch(processServerEvent(serverEvent)),
+    );
 
     const message: JoinRoomMessage = {
       draftToken,

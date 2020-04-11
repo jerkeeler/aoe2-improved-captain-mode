@@ -1,5 +1,5 @@
 // Handles all logic around actually running a draft
-import { ClientDraftEvent, DraftState, Role } from '@icm/shared/types';
+import { ActionType, ClientDraftEvent, DraftState, Role, ServerDraftEvent } from '@icm/shared/types';
 import { JoinRoomMessage, SocketEvent } from '@icm/shared/socketTypes';
 import { duration, utc } from 'moment';
 import SocketIO from 'socket.io';
@@ -132,9 +132,23 @@ export function leaveDraft({ io, connInfo: { draftToken, role } }: SocketInfo) {
   io.in(draftToken).emit(SocketEvent.DRAFT_INFO, getFrontendDraftInfo(draftToken));
 }
 
-export function draftEvent({ connInfo: { draftToken, role } }: SocketInfo, clientDraftEvent: ClientDraftEvent) {
+export function draftEvent({ io, connInfo: { draftToken, role } }: SocketInfo, clientDraftEvent: ClientDraftEvent) {
   if (!draftToken || role === Role.SPECTATOR) return;
 
   // TODO: Check if it's that captains turn and corresponding action matches current action
+  //  Validations
+  const serverEvent: ServerDraftEvent = {
+    scope: clientDraftEvent.scope,
+    object: clientDraftEvent.object,
+    type: clientDraftEvent.type,
+    visibility: clientDraftEvent.visibility,
+    captain: clientDraftEvent.captain,
+    civBans: clientDraftEvent.type === ActionType.BAN ? [clientDraftEvent.value] : [],
+    civPicks: clientDraftEvent.type === ActionType.PICK ? [clientDraftEvent.value] : [],
+    mapBans: [],
+    mapPicks: [],
+  };
+  io.in(draftToken).emit(SocketEvent.SERVER_DRAFT_EVENT, serverEvent);
   cancelCountdown(draftToken);
+  nextAction(io, draftToken);
 }
