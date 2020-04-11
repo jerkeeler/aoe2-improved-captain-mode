@@ -3,7 +3,10 @@
   "name": "aoe2-improved-captains-mode",
   "version": "1.0.0",
   "scripts": {
-    "lint": "npx concurrently --names \"FRONTEND,SERVER,SHARED\" -c \"bgCyan.bold,bgGreen.bold,bgMagenta.bold\" \"cd frontend && npm run lint\" \"cd server && npm run lint\" \"cd shared && npm run lint\""
+    "lint": "npx concurrently --names \"FRONTEND,SERVER,SHARED\" -c \"bgCyan.bold,bgGreen.bold,bgMagenta.bold\" \"cd frontend && npm run lint\" \"cd server && npm run lint\" \"cd shared && npm run lint\"",
+    "deploy:frontend": "npx rocket prod deploy-frontend",
+    "deploy:backend": "npx rocket prod deploy-backend",
+    "deploy": "npx rocket prod deploy"
   },
   "repository": {
     "type": "git",
