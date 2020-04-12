@@ -6,15 +6,14 @@ module.exports = {
     {
       name: 'aoe2icm-server',
       script: './bin/www',
-      cwd: process.env.REMOTE_CWD,
+      cwd: process.env.CWD,
+      interpreter: process.env.INTERPRETER,
       env: {
         LOG_LEVEL: 'debug',
-        PORT: process.env.REMOTE_PORT,
         NODE_ENV: 'development',
       },
       env_production: {
         LOG_LEVEL: 'info',
-        PORT: process.env.REMOTE_PORT,
         NODE_ENV: 'production',
       },
     },
