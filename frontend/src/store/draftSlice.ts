@@ -99,7 +99,7 @@ export const slice = createSlice({
   },
 });
 
-export const { setRole, setDraftInfo, setCountdown } = slice.actions;
+export const { setRole, setDraftInfo, setCountdown, clearState } = slice.actions;
 
 export const getDraftInfo = (draftToken: string): AppThunk => async (dispatch) => {
   const { availableRoles, draftConfig } = await draftService.getDraftInfo(draftToken);

@@ -92,7 +92,7 @@ const CivPicker = () => {
   }
 
   const onClick = (civ: Civ) => {
-    if (activeAction.captain !== captain.captain || state !== DraftState.IN_PROGRESS) return;
+    if (state !== DraftState.IN_PROGRESS || activeAction.captain !== captain.captain) return;
     const socket = getSocket();
     const draftEvent: ClientDraftEvent = {
       ...activeAction,
