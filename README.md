@@ -1,5 +1,7 @@
 # AoE2 Improved Captain Mode (aoe2icm)
 
+![server build status](https://img.shields.io/github/workflow/status/jerkeeler/aoe2-improved-captain-mode/Server?label=server) ![frontend build status](https://img.shields.io/github/workflow/status/jerkeeler/aoe2-improved-captain-mode/Frontend?label=frontend)
+
 AoE2 Improved Captain Mode is hosted at [cm.aoestats.io](https://cm.aoestats.io).
 
 This is a typescript based project for Age of Empires II competitive drafting between two "captains". This was heavily inspired by the [original captain's mode](https://github.com/aocpip/aoe2cm) made by pip. There are a couple of distinct changes however:
