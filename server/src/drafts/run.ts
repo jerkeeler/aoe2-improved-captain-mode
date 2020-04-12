@@ -149,6 +149,5 @@ export function draftEvent({ io, connInfo: { draftToken, role } }: SocketInfo, c
     mapPicks: [],
   };
   io.in(draftToken).emit(SocketEvent.SERVER_DRAFT_EVENT, serverEvent);
-  cancelCountdown(draftToken);
   nextAction(io, draftToken);
 }
