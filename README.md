@@ -1,3 +1,9 @@
+# ===============
+# DPRECATED
+# ===============
+
+This project is **deprecated** for the time being. While I may work on this in the future, right now the current cm2 initiative by hszemi and SiegeEngineers has fixed all of my qualms with the old captain's mode. Checkout the cm2 project on github: https://github.com/SiegeEngineers/aoe2cm2
+
 # AoE2 Improved Captain Mode (aoe2icm)
 
 ![server build status](https://img.shields.io/github/workflow/status/jerkeeler/aoe2-improved-captain-mode/Server?label=server) ![frontend build status](https://img.shields.io/github/workflow/status/jerkeeler/aoe2-improved-captain-mode/Frontend?label=frontend)
